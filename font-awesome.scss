@@ -1,0 +1,11 @@
+@font-face {
+  font-family: 'FontAwesome';
+  src: url(font-awesome/fonts/fontawesome-webfont.woff) format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@import "font-awesome/scss/variables";
+@import "font-awesome/scss/mixins";
+@import "font-awesome/scss/core";
+@import "font-awesome/scss/icons";

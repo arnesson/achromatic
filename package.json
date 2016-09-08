@@ -1,0 +1,28 @@
+{
+  "author": {
+    "name": "Robert Arnesson"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/arnesson/achromatic"
+  },
+  "name": "angular-cordova",
+  "version": "0.1.0",
+  "description": "Bootstrap Achromatic",
+  "keywords": [
+    "bootstrap",
+    "achromatic"
+  ],
+  "dependencies": {
+    "bootstrap": "4.0.0-alpha.2",
+    "font-awesome": "4.6.3"
+  },
+  "devDependencies": {
+    "@angular/core": "2.0.0-rc.6",
+    "@types/core-js": "0.9.32",
+    "rxjs": "5.0.0-beta.11",
+    "typescript": "2.0.2",
+    "zone.js": "0.6.17"
+  }
+}
