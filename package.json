@@ -7,7 +7,7 @@
     "type": "git",
     "url": "https://github.com/arnesson/achromatic"
   },
-  "name": "angular-cordova",
+  "name": "achromatic",
   "version": "0.1.0",
   "description": "Bootstrap Achromatic",
   "keywords": [
