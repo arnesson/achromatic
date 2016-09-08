@@ -1,5 +1,5 @@
 # achromatic
-Bootstrap Achromatic
+Achromatic UI
 
 NPM: https://www.npmjs.com/package/achromatic
 
