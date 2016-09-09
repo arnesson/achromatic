@@ -151,7 +151,7 @@ app {
   min-height: 100%;
   display: block;
   background: $body-bg;
-  padding-top: 56px;
+  padding-top: 44px;
 }
 // TODO: bake this into iscroll as e.g. offset option
 .iScrollVerticalScrollbar.iScrollLoneScrollbar {
@@ -192,7 +192,7 @@ app {
     bottom: 0;
     left: 0;
     right: 0;
-    height: 56px;
+    height: 44px;
     z-index:1;
 
     .navbar {
@@ -516,18 +516,18 @@ a, button {
             animation: app .3s;
         }
         navbar {
-            height: 76px;
+            height: 64px;
             padding-top:20px;
         }
         .statusbar {
             height: 20px;
         }
         .view {
-            padding-top: 76px;
+            padding-top: 64px;
         }
         // TODO: bake this into iscroll as e.g. offset option
         .iScrollVerticalScrollbar.iScrollLoneScrollbar {
-          top: 78px !important;
+          top: 66px !important;
         }
         //
     }
