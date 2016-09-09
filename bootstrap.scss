@@ -151,7 +151,7 @@ app {
   min-height: 100%;
   display: block;
   background: $body-bg;
-  padding-top: 44px;
+  padding-top: 45px;
 }
 // TODO: bake this into iscroll as e.g. offset option
 .iScrollVerticalScrollbar.iScrollLoneScrollbar {
@@ -192,10 +192,11 @@ app {
     bottom: 0;
     left: 0;
     right: 0;
-    height: 44px;
+    height: 45px;
     z-index:1;
 
     .navbar {
+        // TODO: border color should be darker and only .5px if (-webkit-min-device-pixel-ratio: 2)
         border-bottom:1px solid $input-border-color;
         height: 100%;
 
@@ -516,18 +517,18 @@ a, button {
             animation: app .3s;
         }
         navbar {
-            height: 64px;
+            height: 65px;
             padding-top:20px;
         }
         .statusbar {
             height: 20px;
         }
         .view {
-            padding-top: 64px;
+            padding-top: 65px;
         }
         // TODO: bake this into iscroll as e.g. offset option
         .iScrollVerticalScrollbar.iScrollLoneScrollbar {
-          top: 66px !important;
+          top: 67px !important;
         }
         //
     }
