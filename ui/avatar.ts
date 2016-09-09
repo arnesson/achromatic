@@ -10,7 +10,7 @@ export class AvatarDirective implements OnInit {
 	@Input('size') size: number;
 
 	ngOnInit() {
-		Object.assign(this.elementRef.nativeElement.style, {
+		(<any>Object).assign(this.elementRef.nativeElement.style, {
 			width: `${this.size || 50}px`,
 			height: `${this.size || 50}px`,
 			display: 'block',
@@ -24,7 +24,7 @@ export class AvatarDirective implements OnInit {
 	public update(avatar: string): void {
 		this.avatar = avatar;
 
-		Object.assign(this.elementRef.nativeElement.style, {
+		(<any>Object).assign(this.elementRef.nativeElement.style, {
 			backgroundImage: `url(${this.avatar || 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7'})`
 		});
 	}

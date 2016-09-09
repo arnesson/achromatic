@@ -52,7 +52,7 @@ export class CarouselComponent implements OnInit, OnDestroy {
   ngOnInit() {
     let el = this.elementRef.nativeElement.querySelector(".scroller");
 
-    Object.assign(this.elementRef.nativeElement.style, {
+    (<any>Object).assign(this.elementRef.nativeElement.style, {
       height: '100%',
       width: '100%',
       display: 'block'
@@ -65,7 +65,7 @@ export class CarouselComponent implements OnInit, OnDestroy {
         width += el.childNodes[i].offsetWidth;
     }
 
-    Object.assign(el.style, {
+    (<any>Object).assign(el.style, {
       position: 'absolute',
       height: '100%',
       width: `${width}px`
