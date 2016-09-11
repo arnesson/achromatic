@@ -194,6 +194,7 @@ app {
     right: 0;
     height: 45px;
     z-index:1;
+    overflow: hidden;
 
     .navbar {
         // TODO: border color should be darker and only .5px if (-webkit-min-device-pixel-ratio: 2)
@@ -209,7 +210,7 @@ app {
             transition: opacity .1s ease, color .1s ease-out;
         }
         a, .fa {
-            line-height: 1rem;
+            line-height: 1.2rem;
         }
         a:active {
             -webkit-transition-duration:0s;
