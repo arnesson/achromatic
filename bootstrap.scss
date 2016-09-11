@@ -155,7 +155,7 @@ app {
 }
 // TODO: bake this into iscroll as e.g. offset option
 .iScrollVerticalScrollbar.iScrollLoneScrollbar {
-  top: 58px !important;
+  top: 47px !important;
 }
 //
 .statusbar {
@@ -517,7 +517,7 @@ a, button {
             -webkit-animation: app .3s;
             animation: app .3s;
         }
-        navbar {
+        .navbar-light, .navbar-dark {
             height: 65px;
             padding-top:20px;
         }
