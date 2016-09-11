@@ -199,16 +199,17 @@ app {
         // TODO: border color should be darker and only .5px if (-webkit-min-device-pixel-ratio: 2)
         border-bottom:1px solid $input-border-color;
         height: 100%;
+        padding: 0;
 
         a {
             cursor: pointer;
-            margin: -0.75rem 0;
+            /*margin: -0.75rem 0;*/
             padding: 1rem 16px !important;
             -webkit-transition: opacity .1s ease, color .1s ease-out;
             transition: opacity .1s ease, color .1s ease-out;
         }
         a, .fa {
-            line-height: 2rem;
+            line-height: 1rem;
         }
         a:active {
             -webkit-transition-duration:0s;
