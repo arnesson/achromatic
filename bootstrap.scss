@@ -260,10 +260,10 @@ sidebar {
   outline: none;
 }
 .spacer {
-  padding: 1rem;
+  padding: .75rem 1rem;
 }
 .spacer + .spacer {
-  padding-top: 0px;
+  padding-top: 0;
 }
 
 .btn-secondary, .btn-link {
@@ -499,7 +499,7 @@ a, button {
 }
 .btn.disabled, .btn:disabled {
     opacity: 1;
-    color: rgba(255, 255, 255, 0.2);
+    color: rgba(255, 255, 255, 0.2) !important;
 }
 
 @if $IOS {
