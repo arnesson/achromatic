@@ -42,7 +42,7 @@ $input-padding-x:                1rem !default;
 $input-padding-y:                .5rem !default;
 
 $input-bg:                       $body-bg !default;
-$input-border-color:                   rgba(165,165,165,0.2) !default;
+$input-border-color:             rgba(165,165,165,0.3) !default;
 
 $input-border-radius:            0 !default;
 $input-border-radius-lg:         0 !default;
@@ -197,8 +197,7 @@ app {
     overflow: hidden;
 
     .navbar {
-        // TODO: border color should be darker and only .5px if (-webkit-min-device-pixel-ratio: 2)
-        border-bottom:1px solid $input-border-color;
+        border-bottom:.5px solid rgba(165,165,165,0.8);
         height: 100%;
         padding: 0;
 
@@ -318,7 +317,7 @@ form {
 }
 
 .input-container [ng-messages].ng-active {
-    border-top: 1px solid $brand-warning;
+    border-top: .5px solid $brand-warning;
 }
 
 .input-container [ng-messages] * {
@@ -355,12 +354,12 @@ form {
 }
 
 hr {
-    border-bottom:1px solid $input-border-color;
+    border-bottom:.5px solid $input-border-color;
     margin: 0;
 }
 
 .subheader {
-    border-bottom:1px solid $input-border-color;
+    border-bottom:.5px solid $input-border-color;
     text-transform: uppercase;
     font-size: 0.8rem;
     padding: .75rem 1rem;
@@ -383,7 +382,7 @@ a.list-group-item:active, button.list-group-item:active {
 .input-group {
     width:100%;
     padding: 0 1rem 0 0;
-    border-bottom:1px solid $input-border-color;
+    border-bottom:.5px solid $input-border-color;
 }
 .input-group select,
 input::-webkit-outer-spin-button,
@@ -456,7 +455,7 @@ textarea {
 }
 
 .input-container {
-    border:1px solid $input-border-color;
+    border:.5px solid $input-border-color;
     border-radius: 10px;
 
     .input-group {
