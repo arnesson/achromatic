@@ -154,7 +154,7 @@ app {
     right: 0;
     z-index: 2;
 }
-.navbar-dark a, .navbar-dark a:not([href]) {
+.navbar-dark, .navbar-dark a {
   color: $navbar-dark-color;
 }
 .navbar-dark a:hover {
@@ -163,7 +163,7 @@ app {
 .navbar-dark a:active {
   color: $navbar-dark-active-color !important;
 }
-.navbar-light a, .navbar-light a:not([href]) {
+.navbar-light, .navbar-light a {
   color: $navbar-light-color;
 }
 .navbar-light a:hover {
