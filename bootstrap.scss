@@ -33,7 +33,7 @@ $input-padding-x:                1rem !default;
 $input-padding-y:                .5rem !default;
 
 $input-bg:                       $body-bg !default;
-$input-border-color:             rgba(165,165,165,0.3) !default;
+$input-border-color:             rgba(100,100,100,0.25) !default;
 
 $input-border-radius:            0 !default;
 $input-border-radius-lg:         0 !default;
@@ -184,7 +184,7 @@ app {
     overflow: hidden;
 
     .navbar {
-        border-bottom:.5px solid rgba(165,165,165,0.8);
+        border-bottom:.5px solid rgba(100,100,100,0.5);
         height: 100%;
         padding: 0;
 
