@@ -25,7 +25,7 @@ var ScrollDirective = (function () {
         }
     };
     ScrollDirective.prototype.ngOnInit = function () {
-        this.iscroll = new IScroll(this.elementRef.nativeElement, document.body, {
+        this.iscroll = new IScroll(this.elementRef.nativeElement, this.elementRef.nativeElement.parentNode, {
             scrollX: false,
             scrollY: true,
             freeScroll: false,
