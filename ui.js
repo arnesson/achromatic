@@ -12,6 +12,7 @@ var core_1 = require('@angular/core');
 var common_1 = require('@angular/common');
 var actionsheet_1 = require('./ui/actionsheet');
 var avatar_1 = require('./ui/avatar');
+var cover_1 = require('./ui/cover');
 var loading_1 = require('./ui/loading');
 var notify_1 = require('./ui/notify');
 var scroll_1 = require('./ui/scroll');
@@ -28,6 +29,7 @@ var UIModule = (function () {
             declarations: [
                 actionsheet_1.ActionSheetComponent,
                 avatar_1.AvatarDirective,
+                cover_1.CoverDirective,
                 notify_1.NotifyComponent,
                 scroll_1.ScrollDirective,
                 carousel_1.CarouselComponent,
@@ -39,6 +41,7 @@ var UIModule = (function () {
             exports: [
                 actionsheet_1.ActionSheetComponent,
                 avatar_1.AvatarDirective,
+                cover_1.CoverDirective,
                 notify_1.NotifyComponent,
                 scroll_1.ScrollDirective,
                 carousel_1.CarouselComponent,

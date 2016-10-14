@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { ActionSheetComponent } from './ui/actionsheet';
 import { AvatarDirective } from './ui/avatar';
+import { CoverDirective } from './ui/cover';
 import { LoadingService } from './ui/loading';
 import { NotifyComponent } from './ui/notify';
 import { ScrollDirective } from './ui/scroll';
@@ -16,6 +17,7 @@ import { SwitchComponent } from './ui/switch';
   declarations: [
     ActionSheetComponent,
     AvatarDirective,
+    CoverDirective,
     NotifyComponent,
     ScrollDirective,
     CarouselComponent,
@@ -27,6 +29,7 @@ import { SwitchComponent } from './ui/switch';
   exports: [
     ActionSheetComponent,
     AvatarDirective,
+    CoverDirective,
     NotifyComponent,
     ScrollDirective,
     CarouselComponent,
