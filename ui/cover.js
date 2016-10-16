@@ -21,13 +21,25 @@ var CoverDirective = (function () {
             borderRadius: '50%',
             backgroundColor: 'rgba(0,0,0,.1)',
             backgroundSize: 'cover',
-            backgroundImage: "url(" + (this.cover || 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7') + ")"
+            backgroundImage: "url(" + this.url() + ")"
         });
+    };
+    CoverDirective.prototype.url = function () {
+        var base64 = /^(?:[A-Z0-9+\/]{4})*(?:[A-Z0-9+\/]{2}==|[A-Z0-9+\/]{3}=|[A-Z0-9+\/]{4})$/i;
+        if (!this.cover) {
+            return 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7';
+        }
+        if (base64.test(this.cover)) {
+            return 'data:application/octet-stream;base64,' + this.cover;
+        }
+        else {
+            return this.cover;
+        }
     };
     CoverDirective.prototype.update = function (cover) {
         this.cover = cover;
         Object.assign(this.elementRef.nativeElement.style, {
-            backgroundImage: "url(" + (this.cover || 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7') + ")"
+            backgroundImage: "url(" + this.url() + ")"
         });
     };
     __decorate([

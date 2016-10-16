@@ -21,13 +21,25 @@ var AvatarDirective = (function () {
             borderRadius: '50%',
             backgroundColor: 'rgba(0,0,0,.1)',
             backgroundSize: 'cover',
-            backgroundImage: "url(" + (this.avatar || 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7') + ")"
+            backgroundImage: "url(" + this.url() + ")"
         });
+    };
+    AvatarDirective.prototype.url = function () {
+        var base64 = /^(?:[A-Z0-9+\/]{4})*(?:[A-Z0-9+\/]{2}==|[A-Z0-9+\/]{3}=|[A-Z0-9+\/]{4})$/i;
+        if (!this.avatar) {
+            return 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7';
+        }
+        if (base64.test(this.avatar)) {
+            return 'data:application/octet-stream;base64,' + this.avatar;
+        }
+        else {
+            return this.avatar;
+        }
     };
     AvatarDirective.prototype.update = function (avatar) {
         this.avatar = avatar;
         Object.assign(this.elementRef.nativeElement.style, {
-            backgroundImage: "url(" + (this.avatar || 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7') + ")"
+            backgroundImage: "url(" + this.url() + "})"
         });
     };
     __decorate([
