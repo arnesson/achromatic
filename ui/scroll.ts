@@ -22,6 +22,18 @@ export class ScrollDirective implements OnInit, OnDestroy {
     }
   }
 
+  public scrollToTop(time?: number) {
+    if (this.iscroll) {
+      this.iscroll.scrollTo(0, 0, time);
+    }
+  }
+
+  public scrollToBottom(time?: number) {
+    if (this.iscroll) {
+      this.iscroll.scrollTo(0, this.iscroll.maxScrollY, time);
+    }
+  }
+
   ngOnInit() {
     this.iscroll = new IScroll(this.elementRef.nativeElement, this.elementRef.nativeElement.parentNode, {
       scrollX: false,
