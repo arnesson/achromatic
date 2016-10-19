@@ -38,7 +38,7 @@ export class AvatarDirective implements OnInit {
 		this.avatar = avatar;
 
 		(<any>Object).assign(this.elementRef.nativeElement.style, {
-			backgroundImage: `url(${this.url()}})`
+			backgroundImage: `url(${this.url()})`
 		});
 	}
 }
