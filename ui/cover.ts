@@ -14,7 +14,6 @@ export class CoverDirective implements OnInit {
 			width: 'auto',
 			height: `${this.size || 50}px`,
 			display: 'block',
-			borderRadius: '50%',
 			backgroundColor: 'rgba(0,0,0,.1)',
 			backgroundSize: 'cover',
 			backgroundImage: `url(${this.url()})`
