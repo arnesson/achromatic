@@ -39,7 +39,7 @@ var AvatarDirective = (function () {
     AvatarDirective.prototype.update = function (avatar) {
         this.avatar = avatar;
         Object.assign(this.elementRef.nativeElement.style, {
-            backgroundImage: "url(" + this.url() + "})"
+            backgroundImage: "url(" + this.url() + ")"
         });
     };
     __decorate([
