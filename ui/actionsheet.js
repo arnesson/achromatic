@@ -24,14 +24,14 @@ var ActionSheetComponent = (function () {
             left: '0',
             right: '0',
             zIndex: '100',
-            background: 'rgba(0, 0, 0, 0.6)',
-            webkitTransition: 'opacity .3s, visibility .3s',
-            transition: 'opacity .3s, visibility .3s'
+            background: 'rgba(0, 0, 0, 0.6)'
         });
     };
     ActionSheetComponent.prototype.show = function (actions) {
         this.actions = actions;
         Object.assign(this.elementRef.nativeElement.style, {
+            webkitTransition: 'opacity .3s, visibility .3s',
+            transition: 'opacity .3s, visibility .3s',
             opacity: '1',
             visibility: 'visible'
         });
