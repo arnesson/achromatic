@@ -397,7 +397,9 @@ input::-webkit-inner-spin-button {
     background: transparent;
     padding: .75rem 1rem;
     line-height: $line-height;
-    height: inherit !important;
+}
+select.form-control:not([size]):not([multiple]) {
+    height: 3rem;
 }
 .form-control:disabled, .form-control[readonly] {
     background-color: transparent;
