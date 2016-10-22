@@ -16,7 +16,6 @@ var noop = function () { };
 var SwitchComponent = (function () {
     function SwitchComponent(elementRef) {
         this.elementRef = elementRef;
-        this.innerValue = false;
         // Placeholders for the callbacks which are later provided by the Control Value Accessor
         this.onTouchedCallback = noop;
         this.onChangeCallback = noop;

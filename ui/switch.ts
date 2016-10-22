@@ -26,7 +26,7 @@ const noop = () => {};
 })
 export class SwitchComponent implements ControlValueAccessor, OnInit, OnDestroy {
   private iscroll: IScroll;
-  private innerValue: any = false;
+  private innerValue: any;
 
   constructor(private elementRef: ElementRef) {}
 
