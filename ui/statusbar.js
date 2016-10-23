@@ -14,7 +14,8 @@ var StatusbarComponent = (function () {
     }
     StatusbarComponent = __decorate([
         core_1.Component({
-            selector: 'statusbar'
+            selector: 'statusbar',
+            template: ""
         }), 
         __metadata('design:paramtypes', [])
     ], StatusbarComponent);
