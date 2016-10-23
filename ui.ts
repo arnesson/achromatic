@@ -9,6 +9,7 @@ import { NotifyComponent } from './ui/notify';
 import { ScrollDirective } from './ui/scroll';
 import { CarouselComponent } from './ui/carousel';
 import { SwitchComponent } from './ui/switch';
+import { StatusbarComponent } from './ui/statusbar';
 
 @NgModule({
   imports: [
@@ -22,7 +23,8 @@ import { SwitchComponent } from './ui/switch';
     NotifyComponent,
     ScrollDirective,
     CarouselComponent,
-    SwitchComponent
+    SwitchComponent,
+    StatusbarComponent
   ],
   exports: [
     ActionSheetComponent,
@@ -32,7 +34,8 @@ import { SwitchComponent } from './ui/switch';
     NotifyComponent,
     ScrollDirective,
     CarouselComponent,
-    SwitchComponent
+    SwitchComponent,
+    StatusbarComponent
   ]
 })
-export class UIModule { }
+export class UIModule {}

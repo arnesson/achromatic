@@ -9,7 +9,9 @@ import { Component, ElementRef, OnInit } from '@angular/core';
   `
 })
 export class LoadingComponent {
-    constructor(private elementRef: ElementRef) {}
+    constructor(private elementRef: ElementRef) {
+        loadingComponent = this;
+    }
 
     ngOnInit() {
         (<any>Object).assign(this.elementRef.nativeElement.style, {
@@ -40,3 +42,5 @@ export class LoadingComponent {
         });
     }
 }
+
+export let loadingComponent: LoadingComponent;

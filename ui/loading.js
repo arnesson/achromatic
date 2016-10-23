@@ -12,6 +12,7 @@ var core_1 = require('@angular/core');
 var LoadingComponent = (function () {
     function LoadingComponent(elementRef) {
         this.elementRef = elementRef;
+        exports.loadingComponent = this;
     }
     LoadingComponent.prototype.ngOnInit = function () {
         Object.assign(this.elementRef.nativeElement.style, {

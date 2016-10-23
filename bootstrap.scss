@@ -145,7 +145,7 @@ app {
   top: 47px !important;
 }
 //
-.statusbar {
+statusbar {
     height: 0px;
     background: transparent;
     position: absolute;
@@ -516,7 +516,7 @@ a, button {
             height: 65px;
             padding-top:20px;
         }
-        .statusbar {
+        statusbar {
             height: 20px;
         }
         .view {

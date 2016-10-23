@@ -18,6 +18,7 @@ var notify_1 = require('./ui/notify');
 var scroll_1 = require('./ui/scroll');
 var carousel_1 = require('./ui/carousel');
 var switch_1 = require('./ui/switch');
+var statusbar_1 = require('./ui/statusbar');
 var UIModule = (function () {
     function UIModule() {
     }
@@ -34,7 +35,8 @@ var UIModule = (function () {
                 notify_1.NotifyComponent,
                 scroll_1.ScrollDirective,
                 carousel_1.CarouselComponent,
-                switch_1.SwitchComponent
+                switch_1.SwitchComponent,
+                statusbar_1.StatusbarComponent
             ],
             exports: [
                 actionsheet_1.ActionSheetComponent,
@@ -44,7 +46,8 @@ var UIModule = (function () {
                 notify_1.NotifyComponent,
                 scroll_1.ScrollDirective,
                 carousel_1.CarouselComponent,
-                switch_1.SwitchComponent
+                switch_1.SwitchComponent,
+                statusbar_1.StatusbarComponent
             ]
         }), 
         __metadata('design:paramtypes', [])
