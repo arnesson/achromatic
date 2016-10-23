@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { ActionSheetComponent } from './ui/actionsheet';
+import { ActionsheetComponent } from './ui/actionsheet';
 import { AvatarDirective } from './ui/avatar';
 import { CoverDirective } from './ui/cover';
 import { LoadingComponent } from './ui/loading';
@@ -16,7 +16,7 @@ import { StatusbarComponent } from './ui/statusbar';
     CommonModule
   ],
   declarations: [
-    ActionSheetComponent,
+    ActionsheetComponent,
     AvatarDirective,
     CoverDirective,
     LoadingComponent,
@@ -27,7 +27,7 @@ import { StatusbarComponent } from './ui/statusbar';
     StatusbarComponent
   ],
   exports: [
-    ActionSheetComponent,
+    ActionsheetComponent,
     AvatarDirective,
     CoverDirective,
     LoadingComponent,

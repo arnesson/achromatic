@@ -8,7 +8,7 @@ import { Component, ElementRef, OnInit } from '@angular/core';
     </div>
   `
 })
-export class ActionSheetComponent {
+export class ActionsheetComponent {
     constructor(private elementRef: ElementRef) {}
 
     ngOnInit() {

@@ -9,12 +9,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var ActionSheetComponent = (function () {
-    function ActionSheetComponent(elementRef) {
+var ActionsheetComponent = (function () {
+    function ActionsheetComponent(elementRef) {
         this.elementRef = elementRef;
         this.actions = [];
     }
-    ActionSheetComponent.prototype.ngOnInit = function () {
+    ActionsheetComponent.prototype.ngOnInit = function () {
         Object.assign(this.elementRef.nativeElement.style, {
             visibility: 'hidden',
             opacity: '0',
@@ -27,7 +27,7 @@ var ActionSheetComponent = (function () {
             background: 'rgba(0, 0, 0, 0.6)'
         });
     };
-    ActionSheetComponent.prototype.show = function (actions) {
+    ActionsheetComponent.prototype.show = function (actions) {
         this.actions = actions;
         Object.assign(this.elementRef.nativeElement.style, {
             webkitTransition: 'opacity .3s, visibility .3s',
@@ -36,20 +36,20 @@ var ActionSheetComponent = (function () {
             visibility: 'visible'
         });
     };
-    ActionSheetComponent.prototype.hide = function () {
+    ActionsheetComponent.prototype.hide = function () {
         this.actions = [];
         Object.assign(this.elementRef.nativeElement.style, {
             opacity: '0',
             visibility: 'hidden'
         });
     };
-    ActionSheetComponent = __decorate([
+    ActionsheetComponent = __decorate([
         core_1.Component({
             selector: 'actionsheet',
             template: "\n    <div class=\"spacer\" style=\"position:absolute;bottom:0;left:0;right:0;\">\n      <button *ngFor=\"let action of actions\" (click)=\"action.click()\" class=\"btn btn-block btn-lg btn-secondary\" [ngClass]=\"action.class || ''\">{{action.title}}</button>\n    </div>\n  "
         }), 
         __metadata('design:paramtypes', [core_1.ElementRef])
-    ], ActionSheetComponent);
-    return ActionSheetComponent;
+    ], ActionsheetComponent);
+    return ActionsheetComponent;
 }());
-exports.ActionSheetComponent = ActionSheetComponent;
+exports.ActionsheetComponent = ActionsheetComponent;

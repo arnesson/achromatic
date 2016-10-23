@@ -28,7 +28,7 @@ var UIModule = (function () {
                 common_1.CommonModule
             ],
             declarations: [
-                actionsheet_1.ActionSheetComponent,
+                actionsheet_1.ActionsheetComponent,
                 avatar_1.AvatarDirective,
                 cover_1.CoverDirective,
                 loading_1.LoadingComponent,
@@ -39,7 +39,7 @@ var UIModule = (function () {
                 statusbar_1.StatusbarComponent
             ],
             exports: [
-                actionsheet_1.ActionSheetComponent,
+                actionsheet_1.ActionsheetComponent,
                 avatar_1.AvatarDirective,
                 cover_1.CoverDirective,
                 loading_1.LoadingComponent,
