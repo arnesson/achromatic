@@ -30,18 +30,17 @@ var UIModule = (function () {
                 actionsheet_1.ActionSheetComponent,
                 avatar_1.AvatarDirective,
                 cover_1.CoverDirective,
+                loading_1.LoadingComponent,
                 notify_1.NotifyComponent,
                 scroll_1.ScrollDirective,
                 carousel_1.CarouselComponent,
                 switch_1.SwitchComponent
             ],
-            providers: [
-                loading_1.LoadingService
-            ],
             exports: [
                 actionsheet_1.ActionSheetComponent,
                 avatar_1.AvatarDirective,
                 cover_1.CoverDirective,
+                loading_1.LoadingComponent,
                 notify_1.NotifyComponent,
                 scroll_1.ScrollDirective,
                 carousel_1.CarouselComponent,

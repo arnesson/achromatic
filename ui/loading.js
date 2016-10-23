@@ -9,27 +9,44 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var LoadingService = (function () {
-    function LoadingService() {
+var LoadingComponent = (function () {
+    function LoadingComponent(elementRef) {
+        this.elementRef = elementRef;
     }
-    LoadingService.prototype.start = function () {
-        if (!this.el) {
-            this.el = document.createElement('loading');
-            document.body.appendChild(this.el);
-        }
-        if (this.el) {
-            this.el.style.display = 'block';
-        }
+    LoadingComponent.prototype.ngOnInit = function () {
+        Object.assign(this.elementRef.nativeElement.style, {
+            visibility: 'hidden',
+            opacity: '0',
+            position: 'absolute',
+            top: '0',
+            bottom: '0',
+            left: '0',
+            right: '0',
+            zIndex: '100',
+            background: 'rgba(0, 0, 0, 0.6)'
+        });
     };
-    LoadingService.prototype.stop = function () {
-        if (this.el) {
-            this.el.style.display = 'none';
-        }
+    LoadingComponent.prototype.show = function () {
+        Object.assign(this.elementRef.nativeElement.style, {
+            webkitTransition: 'opacity .3s, visibility .3s',
+            transition: 'opacity .3s, visibility .3s',
+            opacity: '1',
+            visibility: 'visible'
+        });
     };
-    LoadingService = __decorate([
-        core_1.Injectable(), 
-        __metadata('design:paramtypes', [])
-    ], LoadingService);
-    return LoadingService;
+    LoadingComponent.prototype.hide = function () {
+        Object.assign(this.elementRef.nativeElement.style, {
+            opacity: '0',
+            visibility: 'hidden'
+        });
+    };
+    LoadingComponent = __decorate([
+        core_1.Component({
+            selector: 'loading',
+            template: "\n    <div class=\"spacer\" style=\"position:absolute;bottom:0;left:0;right:0;\">\n      <div class=\"icon\"></div>\n    </div>\n  "
+        }), 
+        __metadata('design:paramtypes', [core_1.ElementRef])
+    ], LoadingComponent);
+    return LoadingComponent;
 }());
-exports.LoadingService = LoadingService;
+exports.LoadingComponent = LoadingComponent;
