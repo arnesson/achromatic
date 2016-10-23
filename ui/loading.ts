@@ -3,9 +3,7 @@ import { Component, ElementRef, OnInit } from '@angular/core';
 @Component({
   selector: 'loading',
   template: `
-    <div class="spacer" style="position:absolute;bottom:0;left:0;right:0;">
-      <div class="icon"></div>
-    </div>
+    <div class="spinner" style="position:absolute;top:calc(50% - 20px);left:calc(50% - 20px);width:40px;height:40px;"></div>
   `
 })
 export class LoadingComponent {

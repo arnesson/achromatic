@@ -44,7 +44,7 @@ var LoadingComponent = (function () {
     LoadingComponent = __decorate([
         core_1.Component({
             selector: 'loading',
-            template: "\n    <div class=\"spacer\" style=\"position:absolute;bottom:0;left:0;right:0;\">\n      <div class=\"icon\"></div>\n    </div>\n  "
+            template: "\n    <div class=\"spinner\" style=\"position:absolute;top:calc(50% - 20px);left:calc(50% - 20px);width:40px;height:40px;\"></div>\n  "
         }), 
         __metadata('design:paramtypes', [core_1.ElementRef])
     ], LoadingComponent);
