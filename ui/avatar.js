@@ -14,9 +14,10 @@ var AvatarDirective = (function () {
         this.elementRef = elementRef;
     }
     AvatarDirective.prototype.ngOnInit = function () {
+        var size = this.size || 50;
         Object.assign(this.elementRef.nativeElement.style, {
-            width: (this.size || 50) + "px",
-            height: (this.size || 50) + "px",
+            width: typeof size === 'number' ? size + "px" : size,
+            height: typeof size === 'number' ? size + "px" : size,
             display: 'block',
             borderRadius: '50%',
             backgroundColor: 'rgba(0,0,0,.1)',
@@ -48,7 +49,7 @@ var AvatarDirective = (function () {
     ], AvatarDirective.prototype, "avatar", void 0);
     __decorate([
         core_1.Input('size'), 
-        __metadata('design:type', Number)
+        __metadata('design:type', Object)
     ], AvatarDirective.prototype, "size", void 0);
     AvatarDirective = __decorate([
         core_1.Directive({

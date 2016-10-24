@@ -7,12 +7,14 @@ export class AvatarDirective implements OnInit {
 	constructor(private elementRef: ElementRef) {}
 
 	@Input('avatar') avatar: string;
-	@Input('size') size: number;
+	@Input('size') size: number | string;
 
 	ngOnInit() {
+		let size = this.size || 50;
+
 		(<any>Object).assign(this.elementRef.nativeElement.style, {
-			width: `${this.size || 50}px`,
-			height: `${this.size || 50}px`,
+			width: typeof size === 'number' ? `${size}px` : size,
+			height: typeof size === 'number' ? `${size}px` : size,
 			display: 'block',
 			borderRadius: '50%',
 			backgroundColor: 'rgba(0,0,0,.1)',

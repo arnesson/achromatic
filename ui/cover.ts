@@ -7,12 +7,14 @@ export class CoverDirective implements OnInit {
 	constructor(private elementRef: ElementRef) {}
 
 	@Input('cover') cover: string;
-	@Input('size') size: number;
+	@Input('size') size: number | string;
 
 	ngOnInit() {
+		let size = this.size || 50;
+
 		(<any>Object).assign(this.elementRef.nativeElement.style, {
 			width: 'auto',
-			height: `${this.size || 50}px`,
+			height: typeof size === 'number' ? `${size}px` : size,
 			display: 'block',
 			backgroundColor: 'rgba(0,0,0,.1)',
 			backgroundSize: 'cover',

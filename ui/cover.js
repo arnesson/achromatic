@@ -14,9 +14,10 @@ var CoverDirective = (function () {
         this.elementRef = elementRef;
     }
     CoverDirective.prototype.ngOnInit = function () {
+        var size = this.size || 50;
         Object.assign(this.elementRef.nativeElement.style, {
             width: 'auto',
-            height: (this.size || 50) + "px",
+            height: typeof size === 'number' ? size + "px" : size,
             display: 'block',
             backgroundColor: 'rgba(0,0,0,.1)',
             backgroundSize: 'cover',
@@ -47,7 +48,7 @@ var CoverDirective = (function () {
     ], CoverDirective.prototype, "cover", void 0);
     __decorate([
         core_1.Input('size'), 
-        __metadata('design:type', Number)
+        __metadata('design:type', Object)
     ], CoverDirective.prototype, "size", void 0);
     CoverDirective = __decorate([
         core_1.Directive({
