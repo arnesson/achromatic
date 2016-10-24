@@ -13,6 +13,7 @@ var ActionsheetComponent = (function () {
     function ActionsheetComponent(elementRef) {
         this.elementRef = elementRef;
         this.actions = [];
+        exports.actionsheetComponent = this;
     }
     ActionsheetComponent.prototype.ngOnInit = function () {
         Object.assign(this.elementRef.nativeElement.style, {

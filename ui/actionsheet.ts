@@ -9,7 +9,9 @@ import { Component, ElementRef, OnInit } from '@angular/core';
   `
 })
 export class ActionsheetComponent {
-    constructor(private elementRef: ElementRef) {}
+    constructor(private elementRef: ElementRef) {
+        actionsheetComponent = this;
+    }
 
     ngOnInit() {
         (<any>Object).assign(this.elementRef.nativeElement.style, {
@@ -46,3 +48,5 @@ export class ActionsheetComponent {
         });
     }
 }
+
+export let actionsheetComponent: ActionsheetComponent;
