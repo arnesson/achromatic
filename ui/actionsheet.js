@@ -9,25 +9,19 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var router_1 = require('@angular/router');
+require('rxjs/add/operator/filter');
 var ActionsheetComponent = (function () {
-    function ActionsheetComponent(elementRef) {
+    function ActionsheetComponent(router, elementRef) {
+        var _this = this;
+        this.router = router;
         this.elementRef = elementRef;
         this.actions = [];
         exports.actionsheetComponent = this;
-    }
-    ActionsheetComponent.prototype.ngOnInit = function () {
-        Object.assign(this.elementRef.nativeElement.style, {
-            visibility: 'hidden',
-            opacity: '0',
-            position: 'absolute',
-            top: '0',
-            bottom: '0',
-            left: '0',
-            right: '0',
-            zIndex: '100',
-            background: 'rgba(0, 0, 0, 0.6)'
+        this.router.events.filter(function (e) { return e instanceof router_1.NavigationEnd; }).subscribe(function (e) {
+            _this.hide();
         });
-    };
+    }
     ActionsheetComponent.prototype.show = function (actions) {
         this.actions = actions;
         Object.assign(this.elementRef.nativeElement.style, {
@@ -49,7 +43,7 @@ var ActionsheetComponent = (function () {
             selector: 'actionsheet',
             template: "\n    <div class=\"spacer\" style=\"position:absolute;bottom:0;left:0;right:0;\">\n      <button *ngFor=\"let action of actions\" (click)=\"action.click()\" class=\"btn btn-block btn-lg btn-secondary\" [ngClass]=\"action.class || ''\">{{action.title}}</button>\n    </div>\n  "
         }), 
-        __metadata('design:paramtypes', [core_1.ElementRef])
+        __metadata('design:paramtypes', [router_1.Router, core_1.ElementRef])
     ], ActionsheetComponent);
     return ActionsheetComponent;
 }());

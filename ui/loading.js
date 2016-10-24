@@ -9,24 +9,18 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var router_1 = require('@angular/router');
+require('rxjs/add/operator/filter');
 var LoadingComponent = (function () {
-    function LoadingComponent(elementRef) {
+    function LoadingComponent(router, elementRef) {
+        var _this = this;
+        this.router = router;
         this.elementRef = elementRef;
         exports.loadingComponent = this;
-    }
-    LoadingComponent.prototype.ngOnInit = function () {
-        Object.assign(this.elementRef.nativeElement.style, {
-            visibility: 'hidden',
-            opacity: '0',
-            position: 'absolute',
-            top: '0',
-            bottom: '0',
-            left: '0',
-            right: '0',
-            zIndex: '100',
-            background: 'rgba(0, 0, 0, 0.6)'
+        this.router.events.filter(function (e) { return e instanceof router_1.NavigationEnd; }).subscribe(function (e) {
+            _this.hide();
         });
-    };
+    }
     LoadingComponent.prototype.show = function () {
         Object.assign(this.elementRef.nativeElement.style, {
             webkitTransition: 'opacity .3s, visibility .3s',
@@ -46,7 +40,7 @@ var LoadingComponent = (function () {
             selector: 'loading',
             template: "\n    <div class=\"spinner\" style=\"position:absolute;top:calc(50% - 20px);left:calc(50% - 20px);width:40px;height:40px;\"></div>\n  "
         }), 
-        __metadata('design:paramtypes', [core_1.ElementRef])
+        __metadata('design:paramtypes', [router_1.Router, core_1.ElementRef])
     ], LoadingComponent);
     return LoadingComponent;
 }());

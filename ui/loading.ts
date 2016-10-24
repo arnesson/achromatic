@@ -1,4 +1,7 @@
 import { Component, ElementRef } from '@angular/core';
+import { Router, NavigationEnd } from '@angular/router';
+
+import 'rxjs/add/operator/filter';
 
 @Component({
   selector: 'loading',
@@ -7,8 +10,15 @@ import { Component, ElementRef } from '@angular/core';
   `
 })
 export class LoadingComponent {
-    constructor(private elementRef: ElementRef) {
+    constructor(
+        private router: Router,
+        private elementRef: ElementRef
+    ) {
         loadingComponent = this;
+
+        this.router.events.filter(e => e instanceof NavigationEnd).subscribe((e) => {
+            this.hide();
+        });
     }
 
     public show(): void {

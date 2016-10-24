@@ -1,4 +1,7 @@
 import { Component, ElementRef } from '@angular/core';
+import { Router, NavigationEnd } from '@angular/router';
+
+import 'rxjs/add/operator/filter';
 
 @Component({
   selector: 'actionsheet',
@@ -9,8 +12,15 @@ import { Component, ElementRef } from '@angular/core';
   `
 })
 export class ActionsheetComponent {
-    constructor(private elementRef: ElementRef) {
+    constructor(
+        private router: Router,
+        private elementRef: ElementRef
+    ) {
         actionsheetComponent = this;
+
+        this.router.events.filter(e => e instanceof NavigationEnd).subscribe((e) => {
+            this.hide();
+        });
     }
 
     public actions: any[] = [];
