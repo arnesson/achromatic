@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit } from '@angular/core';
+import { Component, ElementRef } from '@angular/core';
 
 @Component({
   selector: 'actionsheet',
@@ -11,20 +11,6 @@ import { Component, ElementRef, OnInit } from '@angular/core';
 export class ActionsheetComponent {
     constructor(private elementRef: ElementRef) {
         actionsheetComponent = this;
-    }
-
-    ngOnInit() {
-        (<any>Object).assign(this.elementRef.nativeElement.style, {
-            visibility: 'hidden',
-            opacity: '0',
-            position: 'absolute',
-            top: '0',
-            bottom: '0',
-            left: '0',
-            right: '0',
-            zIndex: '100',
-            background: 'rgba(0, 0, 0, 0.6)'
-        });
     }
 
     public actions: any[] = [];
