@@ -48,7 +48,9 @@ export class ScrollDirective implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.iscroll.destroy();
+    if (this.iscroll) {
+      this.iscroll.destroy();
+    }
     this.iscroll = null;
   }
 }
