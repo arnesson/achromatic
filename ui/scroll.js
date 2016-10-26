@@ -47,7 +47,9 @@ var ScrollDirective = (function () {
         });
     };
     ScrollDirective.prototype.ngOnDestroy = function () {
-        this.iscroll.destroy();
+        if (this.iscroll) {
+            this.iscroll.destroy();
+        }
         this.iscroll = null;
     };
     ScrollDirective = __decorate([

@@ -43,8 +43,9 @@ var ActionsheetComponent = (function () {
             selector: 'actionsheet',
             template: "\n    <div class=\"spacer\" style=\"position:absolute;bottom:0;left:0;right:0;\">\n      <button *ngFor=\"let action of actions\" (click)=\"action.click()\" class=\"btn btn-block btn-lg btn-secondary\" [ngClass]=\"action.class || ''\">{{action.title}}</button>\n    </div>\n  "
         }), 
-        __metadata('design:paramtypes', [router_1.Router, core_1.ElementRef])
+        __metadata('design:paramtypes', [(typeof (_a = typeof router_1.Router !== 'undefined' && router_1.Router) === 'function' && _a) || Object, core_1.ElementRef])
     ], ActionsheetComponent);
     return ActionsheetComponent;
+    var _a;
 }());
 exports.ActionsheetComponent = ActionsheetComponent;
