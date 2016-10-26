@@ -11,7 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var forms_1 = require('@angular/forms');
-var IScroll = require('./iscroll');
+var iscroll_1 = require('./iscroll');
 var noop = function () { };
 var SwitchComponent = (function () {
     function SwitchComponent(elementRef) {
@@ -62,7 +62,7 @@ var SwitchComponent = (function () {
         this.elementRef.nativeElement.addEventListener('click', function () {
             _this.iscroll.goToPage(_this.value ? 1 : 0, 0);
         });
-        this.iscroll = new IScroll(this.elementRef.nativeElement.querySelector(".scroller"), this.elementRef.nativeElement, {
+        this.iscroll = new iscroll_1.IScroll(this.elementRef.nativeElement.querySelector(".scroller"), this.elementRef.nativeElement, {
             scrollX: true,
             scrollY: false,
             freeScroll: false,

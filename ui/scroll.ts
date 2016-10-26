@@ -1,6 +1,6 @@
 import { Directive, ElementRef, OnInit, OnDestroy } from '@angular/core';
 
-import IScroll = require('./iscroll');
+import { IScroll } from './iscroll';
 
 @Directive({
   selector: '[scroll]'

@@ -9,7 +9,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var IScroll = require('./iscroll');
+var iscroll_1 = require('./iscroll');
 var CarouselComponent = (function () {
     function CarouselComponent(elementRef) {
         this.elementRef = elementRef;
@@ -63,7 +63,7 @@ var CarouselComponent = (function () {
             height: '100%',
             width: width + "px"
         });
-        this.iscroll = new IScroll(el, this.elementRef.nativeElement, {
+        this.iscroll = new iscroll_1.IScroll(el, this.elementRef.nativeElement, {
             scrollX: true,
             scrollY: false,
             freeScroll: false,

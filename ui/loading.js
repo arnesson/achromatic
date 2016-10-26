@@ -40,9 +40,8 @@ var LoadingComponent = (function () {
             selector: 'loading',
             template: "\n    <div class=\"spinner\" style=\"position:absolute;top:calc(50% - 20px);left:calc(50% - 20px);width:40px;height:40px;\"></div>\n  "
         }), 
-        __metadata('design:paramtypes', [(typeof (_a = typeof router_1.Router !== 'undefined' && router_1.Router) === 'function' && _a) || Object, core_1.ElementRef])
+        __metadata('design:paramtypes', [router_1.Router, core_1.ElementRef])
     ], LoadingComponent);
     return LoadingComponent;
-    var _a;
 }());
 exports.LoadingComponent = LoadingComponent;

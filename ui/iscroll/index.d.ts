@@ -11,6 +11,4 @@ interface IScroll {
     maxScrollY: number;
 }
 
-declare var IScroll: IScroll;
-
-export = IScroll;
+export var IScroll: IScroll;

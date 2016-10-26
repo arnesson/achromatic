@@ -3,7 +3,7 @@
 import { Component, forwardRef, ElementRef, OnInit, OnDestroy } from '@angular/core';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 
-import IScroll = require('./iscroll');
+import { IScroll } from './iscroll';
 
 const noop = () => {};
 

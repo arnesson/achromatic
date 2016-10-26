@@ -9,7 +9,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var IScroll = require('./iscroll');
+var iscroll_1 = require('./iscroll');
 var ScrollDirective = (function () {
     function ScrollDirective(elementRef) {
         this.elementRef = elementRef;
@@ -35,7 +35,7 @@ var ScrollDirective = (function () {
         }
     };
     ScrollDirective.prototype.ngOnInit = function () {
-        this.iscroll = new IScroll(this.elementRef.nativeElement, this.elementRef.nativeElement.parentNode, {
+        this.iscroll = new iscroll_1.IScroll(this.elementRef.nativeElement, this.elementRef.nativeElement.parentNode, {
             scrollX: false,
             scrollY: true,
             freeScroll: false,
