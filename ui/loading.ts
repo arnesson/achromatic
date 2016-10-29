@@ -26,7 +26,7 @@ export class LoadingComponent {
 
         Observable.create((o: any) => {
             this.observer = o;
-        }).debounceTime(200).subscribe((changes) => {
+        }).debounceTime(200).subscribe((changes: Object) => {
             (<any>Object).assign(this.elementRef.nativeElement.style, changes);
         });
     }
