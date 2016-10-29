@@ -35,13 +35,16 @@ export class ActionsheetComponent {
             visibility: 'visible'
         });
     }
-    public hide(): void {
-        this.actions = [];
 
-        (<any>Object).assign(this.elementRef.nativeElement.style, {
-            opacity: '0',
-            visibility: 'hidden'
-        });
+    public hide(): void {
+        if (this.actions.length) {
+            this.actions = [];
+
+            (<any>Object).assign(this.elementRef.nativeElement.style, {
+                opacity: '0',
+                visibility: 'hidden'
+            });
+        }
     }
 }
 

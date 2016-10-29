@@ -32,11 +32,13 @@ var ActionsheetComponent = (function () {
         });
     };
     ActionsheetComponent.prototype.hide = function () {
-        this.actions = [];
-        Object.assign(this.elementRef.nativeElement.style, {
-            opacity: '0',
-            visibility: 'hidden'
-        });
+        if (this.actions.length) {
+            this.actions = [];
+            Object.assign(this.elementRef.nativeElement.style, {
+                opacity: '0',
+                visibility: 'hidden'
+            });
+        }
     };
     ActionsheetComponent = __decorate([
         core_1.Component({

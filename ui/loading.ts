@@ -13,6 +13,7 @@ import 'rxjs/add/operator/debounceTime';
 })
 export class LoadingComponent {
     private observer: any;
+    private visible: boolean = false;
 
     constructor(
         private router: Router,
@@ -29,6 +30,7 @@ export class LoadingComponent {
         }).debounceTime(200).subscribe((changes: any) => {
             if (changes) {
                 (<any>Object).assign(this.elementRef.nativeElement.style, changes);
+                this.visible = false;
             }
         });
     }
@@ -41,12 +43,16 @@ export class LoadingComponent {
             visibility: 'visible'
         });
         this.observer.next(null);
+        this.visible = true;
     }
+
     public hide(): void {
-        this.observer.next({
-            opacity: '0',
-            visibility: 'hidden'
-        });
+        if (this.visible) {
+            this.observer.next({
+                opacity: '0',
+                visibility: 'hidden'
+            });
+        }
     }
 }
 

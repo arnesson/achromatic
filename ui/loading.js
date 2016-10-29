@@ -18,6 +18,7 @@ var LoadingComponent = (function () {
         var _this = this;
         this.router = router;
         this.elementRef = elementRef;
+        this.visible = false;
         exports.loadingComponent = this;
         this.router.events.filter(function (e) { return e instanceof router_1.NavigationEnd; }).subscribe(function (e) {
             _this.hide();
@@ -27,6 +28,7 @@ var LoadingComponent = (function () {
         }).debounceTime(200).subscribe(function (changes) {
             if (changes) {
                 Object.assign(_this.elementRef.nativeElement.style, changes);
+                _this.visible = false;
             }
         });
     }
@@ -38,12 +40,15 @@ var LoadingComponent = (function () {
             visibility: 'visible'
         });
         this.observer.next(null);
+        this.visible = true;
     };
     LoadingComponent.prototype.hide = function () {
-        this.observer.next({
-            opacity: '0',
-            visibility: 'hidden'
-        });
+        if (this.visible) {
+            this.observer.next({
+                opacity: '0',
+                visibility: 'hidden'
+            });
+        }
     };
     LoadingComponent = __decorate([
         core_1.Component({
