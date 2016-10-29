@@ -430,7 +430,7 @@ input::-webkit-inner-spin-button {
     }
 }
 .form-control {
-    background: transparent;
+    background: transparent !important;
     padding: .75rem 1rem;
     line-height: $line-height;
 }
