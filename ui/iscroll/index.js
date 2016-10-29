@@ -1969,9 +1969,9 @@ Indicator.prototype = {
 IScroll.utils = utils;
 
 if ( typeof module != 'undefined' && module.exports ) {
-	module.exports = IScroll;
+	module.exports = {IScroll: IScroll};
 } else if ( typeof define == 'function' && define.amd ) {
-        define( function () { return IScroll; } );
+        define( function () { return {IScroll: IScroll}; } );
 } else {
 	window.IScroll = IScroll;
 }
