@@ -46,12 +46,12 @@ $navbar-padding-horizontal:         0rem !default;
 $navbar-padding-vertical:           0.75rem !default;
 
 $navbar-dark-color:                 rgba(255,255,255,1) !default;
-$navbar-dark-hover-color:           rgba(255,255,255,1) !default;
+$navbar-dark-hover-color:           $navbar-dark-color !default;
 $navbar-dark-active-color:          rgba(255,255,255,.5) !default;
 $navbar-dark-disabled-color:        rgba(255,255,255,.25) !default;
 
 $navbar-light-color:                rgba(0,0,0,1) !default;
-$navbar-light-hover-color:          rgba(0,0,0,1) !default;
+$navbar-light-hover-color:          $navbar-light-color !default;
 $navbar-light-active-color:         rgba(0,0,0,.5) !default;
 $navbar-light-disabled-color:       rgba(0,0,0,.25) !default;
 
@@ -260,6 +260,10 @@ loading {
         pointer-events: none;
         font-size: 1rem;
     }
+}
+
+.navbar-dark {
+    background: $brand-primary;
 }
 
 app > ng-component, sidebar {
