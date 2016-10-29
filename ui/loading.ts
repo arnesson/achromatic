@@ -1,7 +1,9 @@
 import { Component, ElementRef } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 
+import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/filter';
+import 'rxjs/add/operator/debounceTime';
 
 @Component({
   selector: 'loading',
@@ -10,6 +12,8 @@ import 'rxjs/add/operator/filter';
   `
 })
 export class LoadingComponent {
+    private observer: any;
+
     constructor(
         private router: Router,
         private elementRef: ElementRef
@@ -19,18 +23,24 @@ export class LoadingComponent {
         this.router.events.filter(e => e instanceof NavigationEnd).subscribe((e) => {
             this.hide();
         });
+
+        Observable.create((o: any) => {
+            this.observer = o;
+        }).debounceTime(200).subscribe((changes) => {
+            (<any>Object).assign(this.elementRef.nativeElement.style, changes);
+        });
     }
 
     public show(): void {
-        (<any>Object).assign(this.elementRef.nativeElement.style, {
-            webkitTransition: 'opacity .3s, visibility .3s',
-            transition: 'opacity .3s, visibility .3s',
+        this.observer.next({
+            webkitTransition: 'opacity .2s, visibility .2s',
+            transition: 'opacity .2s, visibility .2s',
             opacity: '1', 
             visibility: 'visible'
         });
     }
     public hide(): void {
-        (<any>Object).assign(this.elementRef.nativeElement.style, {
+        this.observer.next({
             opacity: '0',
             visibility: 'hidden'
         });

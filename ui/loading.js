@@ -10,7 +10,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
+var Observable_1 = require('rxjs/Observable');
 require('rxjs/add/operator/filter');
+require('rxjs/add/operator/debounceTime');
 var LoadingComponent = (function () {
     function LoadingComponent(router, elementRef) {
         var _this = this;
@@ -20,17 +22,22 @@ var LoadingComponent = (function () {
         this.router.events.filter(function (e) { return e instanceof router_1.NavigationEnd; }).subscribe(function (e) {
             _this.hide();
         });
+        Observable_1.Observable.create(function (o) {
+            _this.observer = o;
+        }).debounceTime(200).subscribe(function (changes) {
+            Object.assign(_this.elementRef.nativeElement.style, changes);
+        });
     }
     LoadingComponent.prototype.show = function () {
-        Object.assign(this.elementRef.nativeElement.style, {
-            webkitTransition: 'opacity .3s, visibility .3s',
-            transition: 'opacity .3s, visibility .3s',
+        this.observer.next({
+            webkitTransition: 'opacity .2s, visibility .2s',
+            transition: 'opacity .2s, visibility .2s',
             opacity: '1',
             visibility: 'visible'
         });
     };
     LoadingComponent.prototype.hide = function () {
-        Object.assign(this.elementRef.nativeElement.style, {
+        this.observer.next({
             opacity: '0',
             visibility: 'hidden'
         });
