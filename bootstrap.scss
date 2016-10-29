@@ -231,7 +231,7 @@ loading {
             transition: opacity .1s ease, color .1s ease-out;
         }
         a, .fa {
-            line-height: 1.2rem;
+            line-height: 1rem;
         }
         a:active {
             -webkit-transition-duration:0s;
@@ -258,7 +258,7 @@ loading {
         position: absolute;
         width: 100%;
         pointer-events: none;
-        font-size: 1.2rem;
+        font-size: 1rem;
     }
 }
 
