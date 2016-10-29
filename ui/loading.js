@@ -25,16 +25,19 @@ var LoadingComponent = (function () {
         Observable_1.Observable.create(function (o) {
             _this.observer = o;
         }).debounceTime(200).subscribe(function (changes) {
-            Object.assign(_this.elementRef.nativeElement.style, changes);
+            if (changes) {
+                Object.assign(_this.elementRef.nativeElement.style, changes);
+            }
         });
     }
     LoadingComponent.prototype.show = function () {
-        this.observer.next({
+        Object.assign(this.elementRef.nativeElement.style, {
             webkitTransition: 'opacity .2s, visibility .2s',
             transition: 'opacity .2s, visibility .2s',
             opacity: '1',
             visibility: 'visible'
         });
+        this.observer.next(null);
     };
     LoadingComponent.prototype.hide = function () {
         this.observer.next({

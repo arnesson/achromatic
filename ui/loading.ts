@@ -26,18 +26,21 @@ export class LoadingComponent {
 
         Observable.create((o: any) => {
             this.observer = o;
-        }).debounceTime(200).subscribe((changes: Object) => {
-            (<any>Object).assign(this.elementRef.nativeElement.style, changes);
+        }).debounceTime(200).subscribe((changes: any) => {
+            if (changes) {
+                (<any>Object).assign(this.elementRef.nativeElement.style, changes);
+            }
         });
     }
 
     public show(): void {
-        this.observer.next({
+        (<any>Object).assign(this.elementRef.nativeElement.style, {
             webkitTransition: 'opacity .2s, visibility .2s',
             transition: 'opacity .2s, visibility .2s',
             opacity: '1', 
             visibility: 'visible'
         });
+        this.observer.next(null);
     }
     public hide(): void {
         this.observer.next({
