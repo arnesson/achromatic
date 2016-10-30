@@ -10,6 +10,7 @@ import { ScrollDirective } from './ui/scroll';
 import { CarouselComponent } from './ui/carousel';
 import { SwitchComponent } from './ui/switch';
 import { StatusbarComponent } from './ui/statusbar';
+import { TextareaDirective } from './ui/textarea';
 
 @NgModule({
   imports: [
@@ -24,7 +25,8 @@ import { StatusbarComponent } from './ui/statusbar';
     ScrollDirective,
     CarouselComponent,
     SwitchComponent,
-    StatusbarComponent
+    StatusbarComponent,
+    TextareaDirective
   ],
   exports: [
     ActionsheetComponent,
@@ -35,7 +37,8 @@ import { StatusbarComponent } from './ui/statusbar';
     ScrollDirective,
     CarouselComponent,
     SwitchComponent,
-    StatusbarComponent
+    StatusbarComponent,
+    TextareaDirective
   ]
 })
 export class UIModule {}
