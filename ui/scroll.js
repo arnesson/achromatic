@@ -15,8 +15,11 @@ var ScrollDirective = (function () {
         this.elementRef = elementRef;
     }
     ScrollDirective.prototype.refresh = function () {
+        var _this = this;
         if (this.iscroll) {
-            this.iscroll.refresh();
+            window.setTimeout(function () {
+                _this.iscroll.refresh();
+            }, 1);
         }
     };
     ScrollDirective.prototype.scrollTo = function (x, y, time) {

@@ -12,7 +12,9 @@ export class ScrollDirective implements OnInit, OnDestroy {
 
   public refresh() {
     if (this.iscroll) {
-      this.iscroll.refresh();
+      (<any>window).setTimeout(() => {
+        this.iscroll.refresh();
+      }, 1);
     }
   }
 
