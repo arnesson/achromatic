@@ -259,17 +259,8 @@ loading {
         font-size: 1rem;
         width: 70%;
         margin: 0 15%;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
         font-weight: bold;
     }
-}
-
-.truncate {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
 }
 
 .navbar-dark {
