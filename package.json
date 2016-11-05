@@ -15,8 +15,7 @@
     "achromatic"
   ],
   "dependencies": {
-    "bootstrap": "4.0.0-alpha.4",
-    "font-awesome": "4.6.3"
+    "bootstrap": "4.0.0-alpha.4"
   },
   "devDependencies": {
     "@angular/core": "2.1.0",
@@ -26,6 +25,9 @@
     "@types/core-js": "0.9.34",
     "rxjs": "5.0.0-beta.12",
     "typescript": "2.0.3",
-    "zone.js": "0.6.21"
+    "zone.js": "0.6.21",
+    "svg2ttf": "4.0.2",
+    "ttf2woff": "2.0.1",
+    "svgicons2svgfont": "5.0.0"
   }
 }
