@@ -321,16 +321,15 @@ sidebar {
 /* /////////////////////////////////////////////////////////////////////////////// */
 // forms
 
-/*
-input {
-  width: 100%;
-  border: none;
-  background: #eee;
-  margin:0;
-  padding:6px 10px;
-  border-radius: 5px;
+input:not(.form-control) {
+    width: 100%;
+    border: none;
+    background: #eee !important;
+    margin: 0;
+    padding: 3px 10px;
+    border-radius: 5px;
+    font-size: 80%;
 }
-*/
 
 form {
   margin:0;
