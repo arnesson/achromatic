@@ -22,41 +22,41 @@ var streamToString = function(stream, callback) {
 fs.readdir('./icons', function(err, files) {
   files.forEach(function(file) {
     if (path.extname(file) === '.svg') {
-      var name = path.basename(file, '.svg');
+      var name = path.basename(file, '.svg').replace("ios-", "");
 
       var font = svgicons2svgfont({});
 
       var glyph = fs.createReadStream(path.join(folder, file));
 
-			glyph.metadata = {
-			  unicode: ['\uE900'],
-			  name: ''
-			};
+      glyph.metadata = {
+        unicode: ['\uE900'],
+        name: ''
+      };
 
-			font.write(glyph);
-			font.end();
+      font.write(glyph);
+      font.end();
 
-			streamToString(font, function(str) {
-				var ttf = svg2ttf(str, {});
-	      var woff = ttf2woff(new Buffer(ttf.buffer), {});
+      streamToString(font, function(str) {
+        var ttf = svg2ttf(str, {});
+        var woff = ttf2woff(new Buffer(ttf.buffer), {});
 
-	      console.log(name);
+        console.log(name);
 
-	      fs.writeFileSync(path.join(folder, name + '.scss'),
-	      	'@import "./icon.scss";' +
-	      	'@font-face {' +
-					'  font-family: "' + name + '";' +
-					'  src: url(data:applicaton/font-woff;base64,' + new Buffer(woff.buffer).toString('base64') + ') format("woff");' +
-					'  font-weight: normal;' +
-					'  font-style: normal;' +
-					'}' +
-					'.icon-ios-arrow-back {' +
-					'  font-family: "' + name + '" !important;' + /* use !important to prevent issues with browser extensions that change fonts */
-					'  &:before {' +
-					'    content: "\\e900";' +
-					'  }' +
-					'}');
-			});
+        fs.writeFileSync(path.join(folder, name + '.scss'),
+          '@import "./icon.scss";' +
+          '@font-face {' +
+          '  font-family: "' + name + '";' +
+          '  src: url(data:applicaton/font-woff;base64,' + new Buffer(woff.buffer).toString('base64') + ') format("woff");' +
+          '  font-weight: normal;' +
+          '  font-style: normal;' +
+          '}' +
+          '.icon-' + name + ' {' +
+          '  font-family: "' + name + '" !important;' + /* use !important to prevent issues with browser extensions that change fonts */
+          '  &:before {' +
+          '    content: "\\e900";' +
+          '  }' +
+          '}');
+      });
     }
   });
 });
