@@ -288,10 +288,6 @@ sidebar {
   padding-top: 0;
 }
 
-.btn-secondary, .btn-link {
-    font-weight: 500;
-}
-
 .btn-link {
   @include button-variant($link-color, transparent, transparent);
 }
