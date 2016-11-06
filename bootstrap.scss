@@ -225,11 +225,9 @@ loading {
 
         a {
             cursor: pointer;
-            padding: 1rem !important;
+            padding: 1rem .5rem;
             -webkit-transition: opacity .1s ease, color .1s ease-out;
             transition: opacity .1s ease, color .1s ease-out;
-        }
-        a, .fa {
             line-height: 1rem;
         }
         a:active {
