@@ -42,28 +42,20 @@ fs.readdir('./icons', function(err, files) {
 
 	      console.log(name);
 
-	      fs.writeFileSync(path.join(folder, name + '.scss'), '@font-face {' +
-'  font-family: "' + name + '";' +
-'  src: url(data:applicaton/font-woff;base64,' + new Buffer(woff.buffer).toString('base64') + ') format("woff");' +
-'  font-weight: normal;' +
-'  font-style: normal;' +
-'}' +
-'[class^="icon-"], [class*=" icon-"] {' +
-'  speak: none;' +
-'  font-style: normal;' +
-'  font-weight: normal;' +
-'  font-variant: normal;' +
-'  text-transform: none;' +
-'  line-height: 1;' +
-'  -webkit-font-smoothing: antialiased;' +
-'  -moz-osx-font-smoothing: grayscale;' +
-'}' +
-'.icon-ios-arrow-back {' +
-'  font-family: "' + name + '" !important;' + /* use !important to prevent issues with browser extensions that change fonts */
-'  &:before {' +
-'    content: "\e900";' +
-'  }' +
-'}');
+	      fs.writeFileSync(path.join(folder, name + '.scss'),
+	      	'@import "./icon.scss";' +
+	      	'@font-face {' +
+					'  font-family: "' + name + '";' +
+					'  src: url(data:applicaton/font-woff;base64,' + new Buffer(woff.buffer).toString('base64') + ') format("woff");' +
+					'  font-weight: normal;' +
+					'  font-style: normal;' +
+					'}' +
+					'.icon-ios-arrow-back {' +
+					'  font-family: "' + name + '" !important;' + /* use !important to prevent issues with browser extensions that change fonts */
+					'  &:before {' +
+					'    content: "\\e900";' +
+					'  }' +
+					'}');
 			});
     }
   });
