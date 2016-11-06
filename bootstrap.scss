@@ -321,18 +321,24 @@ sidebar {
 /* /////////////////////////////////////////////////////////////////////////////// */
 // forms
 
-input:not(.form-control) {
+.input-emboss {
     width: 100%;
-    border: none;
     background: #eee !important;
     margin: 0;
-    padding: 5px 10px;
     border-radius: 5px;
+
+    input {
+        padding: 5px 10px;
+        font-size: inherit;
+    }
+}
+input.input-emboss {
+    padding: 5px 10px;
     font-size: inherit;
 }
 
 form {
-  margin:0;
+    margin:0;
 }
 
 .input-container [ng-messages] {
