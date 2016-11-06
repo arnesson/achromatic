@@ -7,7 +7,7 @@ var svgicons2svgfont = require('svgicons2svgfont');
 var svg2ttf = require('svg2ttf');
 var ttf2woff = require('ttf2woff');
 
-var folder = './icons';
+var folder = './icon';
 
 var streamToString = function(stream, callback) {
   var str = '';
@@ -19,7 +19,7 @@ var streamToString = function(stream, callback) {
   });
 }
 
-fs.readdir('./icons', function(err, files) {
+fs.readdir(folder, function(err, files) {
   files.forEach(function(file) {
     if (path.extname(file) === '.svg') {
       var name = path.basename(file, '.svg').replace("ios-", "");
@@ -43,7 +43,20 @@ fs.readdir('./icons', function(err, files) {
         console.log(name);
 
         fs.writeFileSync(path.join(folder, name + '.scss'),
-          '@import "./icon.scss";' +
+          '$__INCLUDE_ICON_SCSS: true !default !global;' +
+          '@if $__INCLUDE_ICON_SCSS {' +
+          '  $__INCLUDE_ICON_SCSS: false;' +
+          '  [class^="icon-"], [class*=" icon-"] {' +
+          '    speak: none;' +
+          '    font-style: normal;' +
+          '    font-weight: normal;' +
+          '    font-variant: normal;' +
+          '    text-transform: none;' +
+          '    font-size: 32px;' +
+          '    -webkit-font-smoothing: antialiased;' +
+          '    -moz-osx-font-smoothing: grayscale;' +
+          '  }' +
+          '}' +
           '@font-face {' +
           '  font-family: "' + name + '";' +
           '  src: url(data:applicaton/font-woff;base64,' + new Buffer(woff.buffer).toString('base64') + ') format("woff");' +
