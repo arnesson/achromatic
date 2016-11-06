@@ -52,7 +52,6 @@ fs.readdir(folder, function(err, files) {
           '    font-weight: normal;' +
           '    font-variant: normal;' +
           '    text-transform: none;' +
-          '    font-size: 32px;' +
           '    -webkit-font-smoothing: antialiased;' +
           '    -moz-osx-font-smoothing: grayscale;' +
           '  }' +
