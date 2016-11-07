@@ -10,28 +10,26 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var common_1 = require('@angular/common');
-var actionsheet_1 = require('./ui/actionsheet');
-var avatar_1 = require('./ui/avatar');
-var cover_1 = require('./ui/cover');
-var loading_1 = require('./ui/loading');
-var notify_1 = require('./ui/notify');
-var scroll_1 = require('./ui/scroll');
-var carousel_1 = require('./ui/carousel');
-var switch_1 = require('./ui/switch');
-var statusbar_1 = require('./ui/statusbar');
-var textarea_1 = require('./ui/textarea');
-var UIModule = (function () {
-    function UIModule() {
+var actionsheet_1 = require('./actionsheet');
+var lazyload_1 = require('./lazyload');
+var loading_1 = require('./loading');
+var notify_1 = require('./notify');
+var scroll_1 = require('./scroll');
+var carousel_1 = require('./carousel');
+var switch_1 = require('./switch');
+var statusbar_1 = require('./statusbar');
+var textarea_1 = require('./textarea');
+var AchromaticModule = (function () {
+    function AchromaticModule() {
     }
-    UIModule = __decorate([
+    AchromaticModule = __decorate([
         core_1.NgModule({
             imports: [
                 common_1.CommonModule
             ],
             declarations: [
                 actionsheet_1.ActionsheetComponent,
-                avatar_1.AvatarDirective,
-                cover_1.CoverDirective,
+                lazyload_1.LazyloadDirective,
                 loading_1.LoadingComponent,
                 notify_1.NotifyComponent,
                 scroll_1.ScrollDirective,
@@ -42,8 +40,7 @@ var UIModule = (function () {
             ],
             exports: [
                 actionsheet_1.ActionsheetComponent,
-                avatar_1.AvatarDirective,
-                cover_1.CoverDirective,
+                lazyload_1.LazyloadDirective,
                 loading_1.LoadingComponent,
                 notify_1.NotifyComponent,
                 scroll_1.ScrollDirective,
@@ -54,7 +51,7 @@ var UIModule = (function () {
             ]
         }), 
         __metadata('design:paramtypes', [])
-    ], UIModule);
-    return UIModule;
+    ], AchromaticModule);
+    return AchromaticModule;
 }());
-exports.UIModule = UIModule;
+exports.AchromaticModule = AchromaticModule;

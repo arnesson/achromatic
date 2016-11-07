@@ -9,11 +9,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var CoverDirective = (function () {
-    function CoverDirective(elementRef) {
+var LazyloadDirective = (function () {
+    function LazyloadDirective(elementRef) {
         this.elementRef = elementRef;
     }
-    CoverDirective.prototype.ngOnInit = function () {
+    LazyloadDirective.prototype.ngOnInit = function () {
         var size = this.size || 50;
         Object.assign(this.elementRef.nativeElement.style, {
             width: 'auto',
@@ -24,38 +24,38 @@ var CoverDirective = (function () {
             backgroundImage: "url(" + this.url() + ")"
         });
     };
-    CoverDirective.prototype.url = function () {
+    LazyloadDirective.prototype.url = function () {
         var base64 = /^(?:[A-Z0-9+\/]{4})*(?:[A-Z0-9+\/]{2}==|[A-Z0-9+\/]{3}=|[A-Z0-9+\/]{4})$/i;
-        if (!this.cover) {
+        if (!this.file) {
             return 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7';
         }
-        if (base64.test(this.cover)) {
-            return 'data:application/octet-stream;base64,' + this.cover;
+        if (base64.test(this.file)) {
+            return 'data:application/octet-stream;base64,' + this.file;
         }
         else {
-            return this.cover;
+            return this.file;
         }
     };
-    CoverDirective.prototype.update = function (cover) {
-        this.cover = cover;
+    LazyloadDirective.prototype.update = function (file) {
+        this.file = file;
         Object.assign(this.elementRef.nativeElement.style, {
             backgroundImage: "url(" + this.url() + ")"
         });
     };
     __decorate([
-        core_1.Input('cover'), 
+        core_1.Input('lazyload'), 
         __metadata('design:type', String)
-    ], CoverDirective.prototype, "cover", void 0);
+    ], LazyloadDirective.prototype, "file", void 0);
     __decorate([
         core_1.Input('size'), 
         __metadata('design:type', Object)
-    ], CoverDirective.prototype, "size", void 0);
-    CoverDirective = __decorate([
+    ], LazyloadDirective.prototype, "size", void 0);
+    LazyloadDirective = __decorate([
         core_1.Directive({
-            selector: '[cover]'
+            selector: '[lazyload]'
         }), 
         __metadata('design:paramtypes', [core_1.ElementRef])
-    ], CoverDirective);
-    return CoverDirective;
+    ], LazyloadDirective);
+    return LazyloadDirective;
 }());
-exports.CoverDirective = CoverDirective;
+exports.LazyloadDirective = LazyloadDirective;
