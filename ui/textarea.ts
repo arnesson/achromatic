@@ -19,7 +19,5 @@ export class TextareaDirective {
   constructor(
     private element: ElementRef,
     private renderer: Renderer
-  ) {
-    this.renderer.setElementAttribute(this.element.nativeElement, 'rows', '1');
-  }
+  ) {}
 }

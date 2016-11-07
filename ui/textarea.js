@@ -13,7 +13,6 @@ var TextareaDirective = (function () {
     function TextareaDirective(element, renderer) {
         this.element = element;
         this.renderer = renderer;
-        this.renderer.setElementAttribute(this.element.nativeElement, 'rows', '1');
     }
     TextareaDirective.prototype.input = function () {
         this.renderer.setElementStyle(this.element.nativeElement, 'overflow', 'hidden');
