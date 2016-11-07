@@ -409,7 +409,6 @@ a.list-group-item:active, button.list-group-item:active {
 
 .input-group {
     width:100%;
-    padding: 0 1rem 0 0;
     border-bottom:.5px solid $input-border-color;
 }
 .input-group select,
@@ -417,17 +416,17 @@ input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
     -webkit-appearance: none;
 }
-.input-group-addon {
+.input-group label {
     padding: .75rem 1rem;
     min-width: 100px;
     width: 25%;
-    line-height: $line-height;
+    line-height: 1.5;
     text-align: left;
-    background: transparent;
+    display: table-cell;
     vertical-align: top;
 }
 .input-group-lg {
-    .input-group-addon, .form-control {
+    .input-group label, .form-control {
         padding-left: 1rem;
         padding-right: 1rem;
     }
