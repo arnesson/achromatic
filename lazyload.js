@@ -14,10 +14,11 @@ var LazyloadDirective = (function () {
         this.elementRef = elementRef;
     }
     LazyloadDirective.prototype.ngOnInit = function () {
-        var size = this.size || 50;
+        var width = this.width || 'auto';
+        var height = this.height || 'auto';
         Object.assign(this.elementRef.nativeElement.style, {
-            width: 'auto',
-            height: typeof size === 'number' ? size + "px" : size,
+            width: typeof width === 'number' ? width + "px" : width,
+            height: typeof height === 'number' ? height + "px" : height,
             display: 'block',
             backgroundColor: 'rgba(0,0,0,.1)',
             backgroundSize: 'cover',
@@ -47,9 +48,13 @@ var LazyloadDirective = (function () {
         __metadata('design:type', String)
     ], LazyloadDirective.prototype, "file", void 0);
     __decorate([
-        core_1.Input('size'), 
+        core_1.Input('width'), 
         __metadata('design:type', Object)
-    ], LazyloadDirective.prototype, "size", void 0);
+    ], LazyloadDirective.prototype, "width", void 0);
+    __decorate([
+        core_1.Input('height'), 
+        __metadata('design:type', Object)
+    ], LazyloadDirective.prototype, "height", void 0);
     LazyloadDirective = __decorate([
         core_1.Directive({
             selector: '[lazyload]'

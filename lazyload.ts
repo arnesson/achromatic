@@ -7,14 +7,16 @@ export class LazyloadDirective implements OnInit {
 	constructor(private elementRef: ElementRef) {}
 
 	@Input('lazyload') file: string;
-	@Input('size') size: number | string;
+	@Input('width') width: number | string;
+	@Input('height') height: number | string;
 
 	ngOnInit() {
-		let size = this.size || 50;
+		let width = this.width || 'auto';
+		let height = this.height || 'auto';
 
 		(<any>Object).assign(this.elementRef.nativeElement.style, {
-			width: 'auto',
-			height: typeof size === 'number' ? `${size}px` : size,
+			width: typeof width === 'number' ? `${width}px` : width,
+			height: typeof height === 'number' ? `${height}px` : height,
 			display: 'block',
 			backgroundColor: 'rgba(0,0,0,.1)',
 			backgroundSize: 'cover',
