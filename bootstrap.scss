@@ -416,10 +416,12 @@ input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
     -webkit-appearance: none;
 }
-.input-group label {
-    padding: .75rem 1rem;
-    min-width: 100px;
+.input-group label + .form-control {
     width: 25%;
+}
+.input-group label {
+    min-width: 100px;
+    padding: .75rem 1rem;
     line-height: 1.5;
     text-align: left;
     display: table-cell;
@@ -435,6 +437,7 @@ input::-webkit-inner-spin-button {
     background: transparent !important;
     padding: .75rem 1rem;
     line-height: $line-height;
+    width: 100% !important;
 }
 select.form-control:not([size]):not([multiple]) {
     height: 3rem;
