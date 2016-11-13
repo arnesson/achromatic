@@ -13,6 +13,9 @@ var TextareaDirective = (function () {
     function TextareaDirective(element, renderer) {
         this.element = element;
         this.renderer = renderer;
+        if (!this.element.nativeElement.getAttribute("rows")) {
+            this.element.nativeElement.setAttribute("rows", 1);
+        }
     }
     TextareaDirective.prototype.input = function () {
         this.renderer.setElementStyle(this.element.nativeElement, 'overflow', 'hidden');
@@ -30,7 +33,7 @@ var TextareaDirective = (function () {
     ], TextareaDirective.prototype, "input", null);
     TextareaDirective = __decorate([
         core_1.Directive({
-            selector: 'textarea:not([rows])'
+            selector: 'textarea'
         }), 
         __metadata('design:paramtypes', [core_1.ElementRef, core_1.Renderer])
     ], TextareaDirective);

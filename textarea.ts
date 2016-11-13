@@ -1,7 +1,7 @@
 import { Directive, ElementRef, Renderer, HostListener } from '@angular/core';
 
 @Directive({
-  selector: 'textarea:not([rows])'
+  selector: 'textarea'
 })
 export class TextareaDirective {
 
@@ -19,5 +19,9 @@ export class TextareaDirective {
   constructor(
     private element: ElementRef,
     private renderer: Renderer
-  ) {}
+  ) {
+    if (!this.element.nativeElement.getAttribute("rows")) {
+      this.element.nativeElement.setAttribute("rows", 1);
+    }
+  }
 }
