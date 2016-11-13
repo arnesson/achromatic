@@ -10,6 +10,8 @@ import { CarouselComponent } from './carousel';
 import { SwitchComponent } from './switch';
 import { StatusbarComponent } from './statusbar';
 import { TextareaDirective } from './textarea';
+import { DayPipe } from './day';
+import { NamePipe } from './name';
 
 @NgModule({
   imports: [
@@ -24,7 +26,9 @@ import { TextareaDirective } from './textarea';
     CarouselComponent,
     SwitchComponent,
     StatusbarComponent,
-    TextareaDirective
+    TextareaDirective,
+    DayPipe,
+    NamePipe
   ],
   exports: [
     ActionsheetComponent,
@@ -35,7 +39,9 @@ import { TextareaDirective } from './textarea';
     CarouselComponent,
     SwitchComponent,
     StatusbarComponent,
-    TextareaDirective
+    TextareaDirective,
+    DayPipe,
+    NamePipe
   ]
 })
 export class AchromaticModule {}

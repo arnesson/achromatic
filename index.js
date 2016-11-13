@@ -19,6 +19,8 @@ var carousel_1 = require('./carousel');
 var switch_1 = require('./switch');
 var statusbar_1 = require('./statusbar');
 var textarea_1 = require('./textarea');
+var day_1 = require('./day');
+var name_1 = require('./name');
 var AchromaticModule = (function () {
     function AchromaticModule() {
     }
@@ -36,7 +38,9 @@ var AchromaticModule = (function () {
                 carousel_1.CarouselComponent,
                 switch_1.SwitchComponent,
                 statusbar_1.StatusbarComponent,
-                textarea_1.TextareaDirective
+                textarea_1.TextareaDirective,
+                day_1.DayPipe,
+                name_1.NamePipe
             ],
             exports: [
                 actionsheet_1.ActionsheetComponent,
@@ -47,7 +51,9 @@ var AchromaticModule = (function () {
                 carousel_1.CarouselComponent,
                 switch_1.SwitchComponent,
                 statusbar_1.StatusbarComponent,
-                textarea_1.TextareaDirective
+                textarea_1.TextareaDirective,
+                day_1.DayPipe,
+                name_1.NamePipe
             ]
         }), 
         __metadata('design:paramtypes', [])
