@@ -411,8 +411,6 @@ a.list-group-item:active, button.list-group-item:active {
 
 .input-group {
     padding: .75rem 1rem;
-    /* line-height: 1.5; */
-    /* text-align: left; */
     width:100%;
     border-bottom:.5px solid $input-border-color;
 }
@@ -423,6 +421,9 @@ input::-webkit-inner-spin-button {
 }
 .input-group {
     .form-control {
+        margin: -.75rem 0;
+    }
+    label + .form-control {
         margin: -.75rem 0 -.75rem 1rem;
     }
     label {
@@ -468,7 +469,7 @@ switch {
     transition-property: box-shadow,border;
 
     margin: -5px 0;
-    height: 30px;
+    height: 31px;
     width: 48px;
     display: block;
     position: relative;
