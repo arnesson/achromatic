@@ -34,8 +34,6 @@ var LoadingComponent = (function () {
     }
     LoadingComponent.prototype.show = function () {
         Object.assign(this.elementRef.nativeElement.style, {
-            webkitTransition: 'opacity .2s, visibility .2s',
-            transition: 'opacity .2s, visibility .2s',
             opacity: '1',
             visibility: 'visible'
         });
