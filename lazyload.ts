@@ -1,7 +1,5 @@
 import { Directive, ElementRef, Input, OnInit } from '@angular/core';
 
-import { Observable } from 'rxjs/Observable';
-
 @Directive({
 	selector: '[lazyload]'
 })
