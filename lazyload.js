@@ -16,20 +16,37 @@ var LazyloadDirective = (function () {
     LazyloadDirective.prototype.ngOnInit = function () {
         var width = this.width || 'auto';
         var height = this.height || 'auto';
+        // TODO: maybe have a nicer placeholder that looks cool with the blur filter
+        var placeholder = this.placeholder || 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7';
         Object.assign(this.elementRef.nativeElement.style, {
             width: typeof width === 'number' ? width + "px" : width,
             height: typeof height === 'number' ? height + "px" : height,
             display: 'block',
             backgroundColor: 'rgba(0,0,0,.1)',
             backgroundSize: 'cover',
-            backgroundImage: "url(" + this.url() + ")"
+            backgroundImage: "url(" + this.base64(placeholder) + ")",
+            webkitFilter: 'blur(15px)',
+            mozFilter: 'blur(15px)',
+            oFilter: 'blur(15px)',
+            msFilter: 'blur(15px)',
+            filter: 'blur(15px)'
         });
-    };
-    LazyloadDirective.prototype.url = function () {
-        var base64 = /^(?:[A-Z0-9+\/]{4})*(?:[A-Z0-9+\/]{2}==|[A-Z0-9+\/]{3}=|[A-Z0-9+\/]{4})$/i;
-        if (!this.file) {
-            return 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7';
+        if (this.file) {
+            this.lazyload(this.file);
         }
+    };
+    LazyloadDirective.prototype.lazyload = function (file) {
+        var _this = this;
+        var img = new Image();
+        img.onload = function () {
+            Object.assign(_this.elementRef.nativeElement.style, {
+                backgroundImage: "url(" + file + ")"
+            });
+        };
+        img.src = file;
+    };
+    LazyloadDirective.prototype.base64 = function (url) {
+        var base64 = /^(?:[A-Z0-9+\/]{4})*(?:[A-Z0-9+\/]{2}==|[A-Z0-9+\/]{3}=|[A-Z0-9+\/]{4})$/i;
         if (base64.test(this.file)) {
             return 'data:application/octet-stream;base64,' + this.file;
         }
@@ -39,18 +56,16 @@ var LazyloadDirective = (function () {
     };
     LazyloadDirective.prototype.update = function (file) {
         this.file = file;
-        Object.assign(this.elementRef.nativeElement.style, {
-            backgroundImage: "url(" + this.url() + ")"
-        });
+        this.lazyload(this.file);
     };
     __decorate([
         core_1.Input('lazyload'), 
         __metadata('design:type', String)
     ], LazyloadDirective.prototype, "file", void 0);
     __decorate([
-        core_1.Input('preview'), 
+        core_1.Input('placeholder'), 
         __metadata('design:type', String)
-    ], LazyloadDirective.prototype, "preview", void 0);
+    ], LazyloadDirective.prototype, "placeholder", void 0);
     __decorate([
         core_1.Input('width'), 
         __metadata('design:type', Object)

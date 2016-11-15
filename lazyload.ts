@@ -1,5 +1,7 @@
 import { Directive, ElementRef, Input, OnInit } from '@angular/core';
 
+import { Observable } from 'rxjs/Observable';
+
 @Directive({
 	selector: '[lazyload]'
 })
@@ -30,6 +32,20 @@ export class LazyloadDirective implements OnInit {
 			msFilter: 'blur(15px)',
 			filter: 'blur(15px)'
 		});
+
+		if (this.file) {
+			this.lazyload(this.file);
+		}
+	}
+
+	private lazyload(file: string) {
+        let img = new Image();
+		img.onload = () => {
+			(<any>Object).assign(this.elementRef.nativeElement.style, {
+				backgroundImage: `url(${file})`
+			});
+		};
+		img.src = file;
 	}
 
 	private base64(url: string): string {
@@ -44,9 +60,6 @@ export class LazyloadDirective implements OnInit {
 
 	public update(file: string): void {
 		this.file = file;
-
-		(<any>Object).assign(this.elementRef.nativeElement.style, {
-			backgroundImage: `url(${this.url()})`
-		});
+		this.lazyload(this.file);
 	}
 }
