@@ -30,7 +30,9 @@ export class LazyloadDirective implements OnInit {
 			mozFilter: 'blur(15px)',
 			oFilter: 'blur(15px)',
 			msFilter: 'blur(15px)',
-			filter: 'blur(15px)'
+			filter: 'blur(15px)',
+			webkitTransform: 'translateZ(0)',
+			transform: 'translateZ(0)'
 		});
 
 		if (this.file) {
@@ -42,7 +44,12 @@ export class LazyloadDirective implements OnInit {
         let img = new Image();
 		img.onload = () => {
 			(<any>Object).assign(this.elementRef.nativeElement.style, {
-				backgroundImage: `url(${file})`
+				backgroundImage: `url(${file})`,
+				webkitFilter: 'blur(0px)',
+				mozFilter: 'blur(0px)',
+				oFilter: 'blur(0px)',
+				msFilter: 'blur(0px)',
+				filter: 'blur(0px)'
 			});
 		};
 		img.src = file;

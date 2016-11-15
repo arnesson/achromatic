@@ -29,7 +29,9 @@ var LazyloadDirective = (function () {
             mozFilter: 'blur(15px)',
             oFilter: 'blur(15px)',
             msFilter: 'blur(15px)',
-            filter: 'blur(15px)'
+            filter: 'blur(15px)',
+            webkitTransform: 'translateZ(0)',
+            transform: 'translateZ(0)'
         });
         if (this.file) {
             this.lazyload(this.file);
@@ -40,7 +42,12 @@ var LazyloadDirective = (function () {
         var img = new Image();
         img.onload = function () {
             Object.assign(_this.elementRef.nativeElement.style, {
-                backgroundImage: "url(" + file + ")"
+                backgroundImage: "url(" + file + ")",
+                webkitFilter: 'blur(0px)',
+                mozFilter: 'blur(0px)',
+                oFilter: 'blur(0px)',
+                msFilter: 'blur(0px)',
+                filter: 'blur(0px)'
             });
         };
         img.src = file;
