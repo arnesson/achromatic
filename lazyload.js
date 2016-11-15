@@ -48,6 +48,10 @@ var LazyloadDirective = (function () {
         __metadata('design:type', String)
     ], LazyloadDirective.prototype, "file", void 0);
     __decorate([
+        core_1.Input('preview'), 
+        __metadata('design:type', String)
+    ], LazyloadDirective.prototype, "preview", void 0);
+    __decorate([
         core_1.Input('width'), 
         __metadata('design:type', Object)
     ], LazyloadDirective.prototype, "width", void 0);

@@ -7,6 +7,7 @@ export class LazyloadDirective implements OnInit {
 	constructor(private elementRef: ElementRef) {}
 
 	@Input('lazyload') file: string;
+	@Input('preview') preview: string;
 	@Input('width') width: number | string;
 	@Input('height') height: number | string;
 
