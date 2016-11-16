@@ -25,14 +25,15 @@ export class ActionsheetComponent {
 
     public actions: any[] = [];
 
-    public show(actions: any[]): void {
+    public show(actions: any[], background?: string): void {
         this.actions = actions;
 
         (<any>Object).assign(this.elementRef.nativeElement.style, {
             webkitTransition: 'opacity .3s, visibility .3s',
             transition: 'opacity .3s, visibility .3s',
             opacity: '1', 
-            visibility: 'visible'
+            visibility: 'visible',
+            background: background || 'rgba(0, 0, 0, 0.6)'
         });
     }
 

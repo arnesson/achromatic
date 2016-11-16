@@ -22,13 +22,14 @@ var ActionsheetComponent = (function () {
             _this.hide();
         });
     }
-    ActionsheetComponent.prototype.show = function (actions) {
+    ActionsheetComponent.prototype.show = function (actions, background) {
         this.actions = actions;
         Object.assign(this.elementRef.nativeElement.style, {
             webkitTransition: 'opacity .3s, visibility .3s',
             transition: 'opacity .3s, visibility .3s',
             opacity: '1',
-            visibility: 'visible'
+            visibility: 'visible',
+            background: background || 'rgba(0, 0, 0, 0.6)'
         });
     };
     ActionsheetComponent.prototype.hide = function () {

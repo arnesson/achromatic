@@ -35,10 +35,11 @@ export class LoadingComponent {
         });
     }
 
-    public show(): void {
+    public show(background?: string): void {
         (<any>Object).assign(this.elementRef.nativeElement.style, {
             opacity: '1', 
-            visibility: 'visible'
+            visibility: 'visible',
+            background: background || 'rgba(0, 0, 0, 0.6)'
         });
         this.observer.next(null);
         this.visible = true;

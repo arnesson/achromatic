@@ -32,10 +32,11 @@ var LoadingComponent = (function () {
             }
         });
     }
-    LoadingComponent.prototype.show = function () {
+    LoadingComponent.prototype.show = function (background) {
         Object.assign(this.elementRef.nativeElement.style, {
             opacity: '1',
-            visibility: 'visible'
+            visibility: 'visible',
+            background: background || 'rgba(0, 0, 0, 0.6)'
         });
         this.observer.next(null);
         this.visible = true;
