@@ -21,50 +21,61 @@ export class LazyloadDirective implements OnInit {
 			width: typeof width === 'number' ? `${width}px` : width,
 			height: typeof height === 'number' ? `${height}px` : height,
 			display: 'block',
-			backgroundColor: 'rgba(0,0,0,.1)',
 			backgroundSize: 'cover',
-			backgroundImage: `url(${this.base64(placeholder)})`,
-			webkitFilter: 'blur(15px)',
-			mozFilter: 'blur(15px)',
-			oFilter: 'blur(15px)',
-			msFilter: 'blur(15px)',
-			filter: 'blur(15px)',
-			webkitTransform: 'translateZ(0)',
-			transform: 'translateZ(0)'
+			backgroundColor: 'rgba(0,0,0,0.05)'
 		});
 
-		if (this.file) {
-			this.lazyload(this.file);
+		this.blur(this.placeholder);
+		this.lazyload(this.file);
+	}
+
+	private blur(file: string) {
+		if (file) {
+	        let img = new Image();
+			img.onload = () => {
+				let svg = btoa(`
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="${img.width}" height="${img.height}" viewBox="0 0 ${img.width} ${img.height}">
+  <filter id="blur" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+    <feGaussianBlur stdDeviation="20 20" edgeMode="duplicate" />
+    <feComponentTransfer>
+      <feFuncA type="discrete" tableValues="1 1" />
+    </feComponentTransfer>
+  </filter>
+  <image filter="url(#blur)" xlink:href="${img.src}" x="0" y="0" height="100%" width="100%"/>
+</svg>`);
+
+				(<any>Object).assign(this.elementRef.nativeElement.style, {
+					backgroundImage: `url(data:image/svg+xml;charset=utf-8,${svg})`
+				});
+			};
+			img.src = this.base64(file);
 		}
 	}
 
 	private lazyload(file: string) {
-        let img = new Image();
-		img.onload = () => {
-			(<any>Object).assign(this.elementRef.nativeElement.style, {
-				backgroundImage: `url(${file})`,
-				webkitFilter: 'blur(0px)',
-				mozFilter: 'blur(0px)',
-				oFilter: 'blur(0px)',
-				msFilter: 'blur(0px)',
-				filter: 'blur(0px)'
-			});
-		};
-		img.src = file;
+		if (file) {
+	        let img = new Image();
+			img.onload = () => {
+				(<any>Object).assign(this.elementRef.nativeElement.style, {
+					backgroundImage: `url(${img.src})`
+				});
+			};
+			img.src = this.base64(file);
+		}
 	}
 
 	private base64(url: string): string {
 		let base64 = /^(?:[A-Z0-9+\/]{4})*(?:[A-Z0-9+\/]{2}==|[A-Z0-9+\/]{3}=|[A-Z0-9+\/]{4})$/i;
 
-		if (base64.test(this.file)) {
-			return 'data:application/octet-stream;base64,' + this.file;
+		if (base64.test(url)) {
+			return 'data:application/octet-stream;base64,' + url;
 		} else {
-			return this.file;
+			return url;
 		}
 	}
 
 	public update(file: string): void {
 		this.file = file;
-		this.lazyload(this.file);
+		this.lazyload(file);
 	}
 }
