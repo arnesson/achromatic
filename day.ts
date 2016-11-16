@@ -2,7 +2,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 import { DatePipe } from '@angular/common';
 
 @Pipe({
-	name: 'day'
+  name: 'day'
 })
 export class DayPipe implements PipeTransform {
   private datePipe: DatePipe = new DatePipe('en-US');

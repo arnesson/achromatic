@@ -12,6 +12,7 @@ import { StatusbarComponent } from './statusbar';
 import { TextareaDirective } from './textarea';
 import { DayPipe } from './day';
 import { NamePipe } from './name';
+import { DistancePipe } from './distance';
 
 @NgModule({
   imports: [
@@ -28,7 +29,8 @@ import { NamePipe } from './name';
     StatusbarComponent,
     TextareaDirective,
     DayPipe,
-    NamePipe
+    NamePipe,
+    DistancePipe
   ],
   exports: [
     ActionsheetComponent,
@@ -41,7 +43,8 @@ import { NamePipe } from './name';
     StatusbarComponent,
     TextareaDirective,
     DayPipe,
-    NamePipe
+    NamePipe,
+    DistancePipe
   ]
 })
 export class AchromaticModule {}

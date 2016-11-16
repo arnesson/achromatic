@@ -21,6 +21,7 @@ var statusbar_1 = require('./statusbar');
 var textarea_1 = require('./textarea');
 var day_1 = require('./day');
 var name_1 = require('./name');
+var distance_1 = require('./distance');
 var AchromaticModule = (function () {
     function AchromaticModule() {
     }
@@ -40,7 +41,8 @@ var AchromaticModule = (function () {
                 statusbar_1.StatusbarComponent,
                 textarea_1.TextareaDirective,
                 day_1.DayPipe,
-                name_1.NamePipe
+                name_1.NamePipe,
+                distance_1.DistancePipe
             ],
             exports: [
                 actionsheet_1.ActionsheetComponent,
@@ -53,7 +55,8 @@ var AchromaticModule = (function () {
                 statusbar_1.StatusbarComponent,
                 textarea_1.TextareaDirective,
                 day_1.DayPipe,
-                name_1.NamePipe
+                name_1.NamePipe,
+                distance_1.DistancePipe
             ]
         }), 
         __metadata('design:paramtypes', [])
