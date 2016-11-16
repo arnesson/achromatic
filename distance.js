@@ -15,15 +15,25 @@ var DistancePipe = (function () {
     DistancePipe.prototype.unpack = function (object_or_array) {
         var lat;
         var lng;
-        for (var i in object_or_array) {
-            if (!lat) {
-                lat = object_or_array[i];
-            }
-            else if (!lng) {
-                lng = object_or_array[i];
-            }
-            else {
-                break;
+        if (object_or_array["lat"] && object_or_array["lng"]) {
+            lat = object_or_array["lat"];
+            lng = object_or_array["lng"];
+        }
+        else if (object_or_array["latitude"] && object_or_array["longitude"]) {
+            lat = object_or_array["latitude"];
+            lng = object_or_array["longitude"];
+        }
+        else {
+            for (var i in object_or_array) {
+                if (!lat) {
+                    lat = object_or_array[i];
+                }
+                else if (!lng) {
+                    lng = object_or_array[i];
+                }
+                else {
+                    break;
+                }
             }
         }
         return {

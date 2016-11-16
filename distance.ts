@@ -8,13 +8,21 @@ export class DistancePipe implements PipeTransform {
     let lat: number;
     let lng: number;
 
-    for (let i in object_or_array) {
-      if (!lat) {
-        lat = (<any>object_or_array)[i];
-      } else if (!lng) {
-        lng = (<any>object_or_array)[i];
-      } else {
-        break;
+    if ((<any>object_or_array)["lat"] && (<any>object_or_array)["lng"]) {
+      lat = (<any>object_or_array)["lat"];
+      lng = (<any>object_or_array)["lng"];
+    } else if ((<any>object_or_array)["latitude"] && (<any>object_or_array)["longitude"]) {
+      lat = (<any>object_or_array)["latitude"];
+      lng = (<any>object_or_array)["longitude"];
+    } else {
+      for (let i in object_or_array) {
+        if (!lat) {
+          lat = (<any>object_or_array)[i];
+        } else if (!lng) {
+          lng = (<any>object_or_array)[i];
+        } else {
+          break;
+        }
       }
     }
 
