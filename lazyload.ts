@@ -14,8 +14,6 @@ export class LazyloadDirective implements OnInit {
 	ngOnInit() {
 		let width = this.width || 'auto';
 		let height = this.height || 'auto';
-		// TODO: maybe have a nicer placeholder that looks cool with the blur filter
-		let placeholder = this.placeholder || 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7';
 
 		(<any>Object).assign(this.elementRef.nativeElement.style, {
 			width: typeof width === 'number' ? `${width}px` : width,
@@ -25,7 +23,8 @@ export class LazyloadDirective implements OnInit {
 			backgroundColor: 'rgba(0,0,0,0.05)'
 		});
 
-		this.blur(this.placeholder);
+		// TODO: maybe have a nicer placeholder that looks cool with the blur filter
+		this.blur(this.placeholder || 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7');
 		this.lazyload(this.file);
 	}
 
@@ -36,7 +35,7 @@ export class LazyloadDirective implements OnInit {
 				let svg = btoa(`
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="${img.width}" height="${img.height}" viewBox="0 0 ${img.width} ${img.height}">
   <filter id="blur" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-    <feGaussianBlur stdDeviation="20 20" edgeMode="duplicate" />
+    <feGaussianBlur stdDeviation="5 5" edgeMode="duplicate" />
     <feComponentTransfer>
       <feFuncA type="discrete" tableValues="1 1" />
     </feComponentTransfer>
@@ -45,7 +44,7 @@ export class LazyloadDirective implements OnInit {
 </svg>`);
 
 				(<any>Object).assign(this.elementRef.nativeElement.style, {
-					backgroundImage: `url(data:image/svg+xml;charset=utf-8,${svg})`
+					backgroundImage: `url(data:image/svg+xml;charset=utf-8;base64,${svg})`
 				});
 			};
 			img.src = this.base64(file);

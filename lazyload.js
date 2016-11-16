@@ -16,8 +16,6 @@ var LazyloadDirective = (function () {
     LazyloadDirective.prototype.ngOnInit = function () {
         var width = this.width || 'auto';
         var height = this.height || 'auto';
-        // TODO: maybe have a nicer placeholder that looks cool with the blur filter
-        var placeholder = this.placeholder || 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7';
         Object.assign(this.elementRef.nativeElement.style, {
             width: typeof width === 'number' ? width + "px" : width,
             height: typeof height === 'number' ? height + "px" : height,
@@ -25,7 +23,8 @@ var LazyloadDirective = (function () {
             backgroundSize: 'cover',
             backgroundColor: 'rgba(0,0,0,0.05)'
         });
-        this.blur(this.placeholder);
+        // TODO: maybe have a nicer placeholder that looks cool with the blur filter
+        this.blur(this.placeholder || 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7');
         this.lazyload(this.file);
     };
     LazyloadDirective.prototype.blur = function (file) {
@@ -33,9 +32,9 @@ var LazyloadDirective = (function () {
         if (file) {
             var img_1 = new Image();
             img_1.onload = function () {
-                var svg = btoa("\n<svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" width=\"" + img_1.width + "\" height=\"" + img_1.height + "\" viewBox=\"0 0 " + img_1.width + " " + img_1.height + "\">\n  <filter id=\"blur\" filterUnits=\"userSpaceOnUse\" color-interpolation-filters=\"sRGB\">\n    <feGaussianBlur stdDeviation=\"20 20\" edgeMode=\"duplicate\" />\n    <feComponentTransfer>\n      <feFuncA type=\"discrete\" tableValues=\"1 1\" />\n    </feComponentTransfer>\n  </filter>\n  <image filter=\"url(#blur)\" xlink:href=\"" + img_1.src + "\" x=\"0\" y=\"0\" height=\"100%\" width=\"100%\"/>\n</svg>");
+                var svg = btoa("\n<svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" width=\"" + img_1.width + "\" height=\"" + img_1.height + "\" viewBox=\"0 0 " + img_1.width + " " + img_1.height + "\">\n  <filter id=\"blur\" filterUnits=\"userSpaceOnUse\" color-interpolation-filters=\"sRGB\">\n    <feGaussianBlur stdDeviation=\"5 5\" edgeMode=\"duplicate\" />\n    <feComponentTransfer>\n      <feFuncA type=\"discrete\" tableValues=\"1 1\" />\n    </feComponentTransfer>\n  </filter>\n  <image filter=\"url(#blur)\" xlink:href=\"" + img_1.src + "\" x=\"0\" y=\"0\" height=\"100%\" width=\"100%\"/>\n</svg>");
                 Object.assign(_this.elementRef.nativeElement.style, {
-                    backgroundImage: "url(data:image/svg+xml;charset=utf-8," + svg + ")"
+                    backgroundImage: "url(data:image/svg+xml;charset=utf-8;base64," + svg + ")"
                 });
             };
             img_1.src = this.base64(file);
