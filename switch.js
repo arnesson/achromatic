@@ -89,7 +89,7 @@ var SwitchComponent = (function () {
     SwitchComponent = __decorate([
         core_1.Component({
             selector: 'switch',
-            template: "\n    <div class=\"scroller\" style=\"position:absolute;height:27px;width:62px;top:0;left:0\">\n      <div style=\"height:27px;width:17px;top:0;left:0;position:absolute;\"></div>\n      <div class=\"handle\" style=\"height:29px;width:29px;background: #fff;border:1px solid #ddd;border-radius: 100px;top:0;left:17px;position:absolute;\"></div>\n      <div style=\"height:27px;width:17px;top:0;left:45px;position:absolute;\"></div>\n    </div>\n  ",
+            template: "\n    <div class=\"scroller\" style=\"position:absolute;height:27px;width:62px;top:0;left:0\">\n      <div style=\"height:27px;width:17px;top:0;left:0;position:absolute;\"></div>\n      <div class=\"handle\" style=\"height:27px;width:27px;background: #fff;border:1px solid #ddd;border-radius: 100px;top:0;left:17px;position:absolute;\"></div>\n      <div style=\"height:27px;width:17px;top:0;left:45px;position:absolute;\"></div>\n    </div>\n  ",
             providers: [
                 {
                     provide: forms_1.NG_VALUE_ACCESSOR,

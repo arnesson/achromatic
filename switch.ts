@@ -12,7 +12,7 @@ const noop = () => {};
   template: `
     <div class="scroller" style="position:absolute;height:27px;width:62px;top:0;left:0">
       <div style="height:27px;width:17px;top:0;left:0;position:absolute;"></div>
-      <div class="handle" style="height:29px;width:29px;background: #fff;border:1px solid #ddd;border-radius: 100px;top:0;left:17px;position:absolute;"></div>
+      <div class="handle" style="height:27px;width:27px;background: #fff;border:1px solid #ddd;border-radius: 100px;top:0;left:17px;position:absolute;"></div>
       <div style="height:27px;width:17px;top:0;left:45px;position:absolute;"></div>
     </div>
   `,
