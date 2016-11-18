@@ -12,28 +12,17 @@ var core_1 = require('@angular/core');
 var DistancePipe = (function () {
     function DistancePipe() {
     }
-    DistancePipe.prototype.unpack = function (object_or_array) {
+    DistancePipe.prototype.unpack = function (object) {
         var lat;
         var lng;
-        if (object_or_array["lat"] && object_or_array["lng"]) {
-            lat = object_or_array["lat"];
-            lng = object_or_array["lng"];
-        }
-        else if (object_or_array["latitude"] && object_or_array["longitude"]) {
-            lat = object_or_array["latitude"];
-            lng = object_or_array["longitude"];
-        }
-        else {
-            for (var i in object_or_array) {
-                if (!lat) {
-                    lat = object_or_array[i];
-                }
-                else if (!lng) {
-                    lng = object_or_array[i];
-                }
-                else {
-                    break;
-                }
+        if (object) {
+            if (object["lat"] && object["lng"]) {
+                lat = object["lat"];
+                lng = object["lng"];
+            }
+            else if (object["latitude"] && object["longitude"]) {
+                lat = object["latitude"];
+                lng = object["longitude"];
             }
         }
         return {
@@ -41,7 +30,7 @@ var DistancePipe = (function () {
             lng: lng || 0
         };
     };
-    DistancePipe.prototype.calculate = function (from, to) {
+    DistancePipe.prototype.distance = function (from, to) {
         // Converts numeric degrees to radians
         var toRad = function (value) {
             return value * Math.PI / 180;
@@ -56,8 +45,13 @@ var DistancePipe = (function () {
         return d.toFixed(0);
     };
     DistancePipe.prototype.transform = function (from, to) {
-        var distance = this.calculate(this.unpack(from), this.unpack(to));
-        return distance + " miles away";
+        var f = this.unpack(from);
+        var t = this.unpack(to);
+        if ((!f.lat && !f.lng) || (!t.lat && !t.lng)) {
+            return "";
+        }
+        var d = this.distance(f, t);
+        return d + " miles";
     };
     DistancePipe = __decorate([
         core_1.Pipe({

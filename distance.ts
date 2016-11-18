@@ -4,25 +4,17 @@ import { Pipe, PipeTransform } from '@angular/core';
   name: 'distance'
 })
 export class DistancePipe implements PipeTransform {
-  private unpack(object_or_array: Array<number> | Object): Object {
+  private unpack(object: any): any {
     let lat: number;
     let lng: number;
 
-    if ((<any>object_or_array)["lat"] && (<any>object_or_array)["lng"]) {
-      lat = (<any>object_or_array)["lat"];
-      lng = (<any>object_or_array)["lng"];
-    } else if ((<any>object_or_array)["latitude"] && (<any>object_or_array)["longitude"]) {
-      lat = (<any>object_or_array)["latitude"];
-      lng = (<any>object_or_array)["longitude"];
-    } else {
-      for (let i in object_or_array) {
-        if (!lat) {
-          lat = (<any>object_or_array)[i];
-        } else if (!lng) {
-          lng = (<any>object_or_array)[i];
-        } else {
-          break;
-        }
+    if (object) {
+      if (object["lat"] && object["lng"]) {
+        lat = object["lat"];
+        lng = object["lng"];
+      } else if (object["latitude"] && object["longitude"]) {
+        lat = object["latitude"];
+        lng = object["longitude"];
       }
     }
 
@@ -32,7 +24,7 @@ export class DistancePipe implements PipeTransform {
     };
   }
 
-  private calculate(from: any, to: any) {
+  private distance(from: any, to: any) {
     // Converts numeric degrees to radians
     let toRad = (value: number) => {
       return value * Math.PI / 180;
@@ -49,9 +41,16 @@ export class DistancePipe implements PipeTransform {
     return d.toFixed(0);
   }
 
-  transform(from: Array<number> | Object, to: Array<string | number> | Object): string {
-    let distance = this.calculate(this.unpack(from), this.unpack(to));
+  transform(from: any, to: any): string {
+    let f = this.unpack(from);
+    let t = this.unpack(to);
 
-    return `${distance} miles away`;
+    if ((!f.lat && !f.lng) || (!t.lat && !t.lng)) {
+      return "";
+    }
+
+    let d = this.distance(f, t);
+
+    return `${d} miles`;
   }
 }
