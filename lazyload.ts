@@ -20,11 +20,11 @@ export class LazyloadDirective implements OnInit {
 			height: typeof height === 'number' ? `${height}px` : height,
 			display: 'block',
 			backgroundSize: 'cover',
-			backgroundColor: 'rgba(0,0,0,0.05)'
+			backgroundColor: 'rgba(0,0,0,0.05)',
+			backgroundImage: 'url(data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7)'
 		});
 
-		// TODO: maybe have a nicer placeholder that looks cool with the blur filter
-		this.blur(this.placeholder || 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7');
+		this.blur(this.placeholder);
 		this.lazyload(this.file);
 	}
 
