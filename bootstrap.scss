@@ -431,6 +431,7 @@ input::-webkit-inner-spin-button {
         display: table-cell;
         vertical-align: top;
         width: 20%;
+        white-space: nowrap;
     }
 }
 .input-group-lg {
