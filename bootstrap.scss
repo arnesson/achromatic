@@ -248,6 +248,9 @@ loading {
         }
     }
 
+    a.navbar-brand {
+        pointer-events: none;
+    }
     .navbar-brand {
         text-align: center;
         position: absolute;
