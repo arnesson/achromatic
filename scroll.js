@@ -37,6 +37,11 @@ var ScrollDirective = (function () {
             this.iscroll.scrollTo(0, this.iscroll.maxScrollY, time);
         }
     };
+    ScrollDirective.prototype.on = function (event, fn) {
+        if (this.iscroll) {
+            this.iscroll.on(event, fn);
+        }
+    };
     ScrollDirective.prototype.ngOnInit = function () {
         this.iscroll = new iscroll_1.IScroll(this.elementRef.nativeElement, this.elementRef.nativeElement.parentNode, {
             scrollX: false,
