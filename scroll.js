@@ -13,6 +13,16 @@ var iscroll_1 = require('./iscroll');
 var ScrollDirective = (function () {
     function ScrollDirective(elementRef) {
         this.elementRef = elementRef;
+        this.iscroll = new iscroll_1.IScroll(this.elementRef.nativeElement, this.elementRef.nativeElement.parentNode, {
+            scrollX: false,
+            scrollY: true,
+            freeScroll: false,
+            eventPassthrough: 'horizontal',
+            momentum: true,
+            scrollbars: true,
+            mouseWheel: true,
+            fadeScrollbars: true
+        });
     }
     ScrollDirective.prototype.refresh = function () {
         var _this = this;
@@ -41,18 +51,6 @@ var ScrollDirective = (function () {
         if (this.iscroll) {
             this.iscroll.on(event, fn);
         }
-    };
-    ScrollDirective.prototype.ngOnInit = function () {
-        this.iscroll = new iscroll_1.IScroll(this.elementRef.nativeElement, this.elementRef.nativeElement.parentNode, {
-            scrollX: false,
-            scrollY: true,
-            freeScroll: false,
-            eventPassthrough: 'horizontal',
-            momentum: true,
-            scrollbars: true,
-            mouseWheel: true,
-            fadeScrollbars: true
-        });
     };
     ScrollDirective.prototype.ngOnDestroy = function () {
         if (this.iscroll) {

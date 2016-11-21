@@ -1,14 +1,25 @@
-import { Directive, ElementRef, OnInit, OnDestroy } from '@angular/core';
+import { Directive, ElementRef, OnDestroy } from '@angular/core';
 
 import { IScroll } from './iscroll';
 
 @Directive({
   selector: '[scroll]'
 })
-export class ScrollDirective implements OnInit, OnDestroy {
+export class ScrollDirective implements OnDestroy {
   private iscroll: IScroll;
 
-  constructor(private elementRef: ElementRef) {}
+  constructor(private elementRef: ElementRef) {
+    this.iscroll = new IScroll(this.elementRef.nativeElement, this.elementRef.nativeElement.parentNode, {
+      scrollX: false,
+      scrollY: true,
+      freeScroll: false,
+      eventPassthrough: 'horizontal',
+      momentum: true,
+      scrollbars: true,
+      mouseWheel: true,
+      fadeScrollbars: true
+    });
+  }
 
   public refresh() {
     if (this.iscroll) {
@@ -40,19 +51,6 @@ export class ScrollDirective implements OnInit, OnDestroy {
     if (this.iscroll) {
       this.iscroll.on(event, fn);
     }
-  }
-
-  ngOnInit() {
-    this.iscroll = new IScroll(this.elementRef.nativeElement, this.elementRef.nativeElement.parentNode, {
-      scrollX: false,
-      scrollY: true,
-      freeScroll: false,
-      eventPassthrough: 'horizontal',
-      momentum: true,
-      scrollbars: true,
-      mouseWheel: true,
-      fadeScrollbars: true
-    });
   }
 
   ngOnDestroy() {
