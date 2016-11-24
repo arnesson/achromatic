@@ -32,12 +32,12 @@ var LoadingComponent = (function () {
             }
         });
     }
-    LoadingComponent.prototype.show = function (background) {
+    LoadingComponent.prototype.show = function (className) {
         Object.assign(this.elementRef.nativeElement.style, {
             opacity: '1',
-            visibility: 'visible',
-            background: background || 'rgba(0, 0, 0, 0.6)'
+            visibility: 'visible'
         });
+        this.elementRef.nativeElement.className = 'loading-light';
         this.observer.next(null);
         this.visible = true;
     };

@@ -187,6 +187,20 @@ loading {
     border-top-color: #fff;
     animation: spin 1s infinite linear;
 }
+.loading-light {
+  background: transparent;
+
+  .spinner {
+    border-top-color: rgba(50, 50, 50, 0.5);
+  }
+}
+.loading-dark {
+  background: rgba(0, 0, 0, 0.6);
+  
+  .spinner {
+    border-top-color: #fff;
+  }
+}
 .navbar-dark, .navbar-dark a {
   color: $navbar-dark-color;
 }

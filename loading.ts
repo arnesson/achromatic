@@ -35,12 +35,12 @@ export class LoadingComponent {
         });
     }
 
-    public show(background?: string): void {
+    public show(className?: string): void {
         (<any>Object).assign(this.elementRef.nativeElement.style, {
             opacity: '1', 
-            visibility: 'visible',
-            background: background || 'rgba(0, 0, 0, 0.6)'
+            visibility: 'visible'
         });
+        this.elementRef.nativeElement.className = 'loading-light';
         this.observer.next(null);
         this.visible = true;
     }
