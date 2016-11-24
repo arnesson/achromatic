@@ -1,5 +1,5 @@
 import { Component, ElementRef } from '@angular/core';
-import { Router, NavigationEnd } from '@angular/router';
+import { Router, NavigationStart } from '@angular/router';
 
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/filter';
@@ -21,7 +21,7 @@ export class LoadingComponent {
     ) {
         loadingComponent = this;
 
-        this.router.events.filter(e => e instanceof NavigationEnd).subscribe((e) => {
+        this.router.events.filter(e => e instanceof NavigationStart).subscribe((e) => {
             this.hide();
         });
 

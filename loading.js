@@ -20,7 +20,7 @@ var LoadingComponent = (function () {
         this.elementRef = elementRef;
         this.visible = false;
         exports.loadingComponent = this;
-        this.router.events.filter(function (e) { return e instanceof router_1.NavigationEnd; }).subscribe(function (e) {
+        this.router.events.filter(function (e) { return e instanceof router_1.NavigationStart; }).subscribe(function (e) {
             _this.hide();
         });
         Observable_1.Observable.create(function (o) {
