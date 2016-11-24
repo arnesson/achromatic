@@ -3,7 +3,7 @@ import { Router, NavigationStart } from '@angular/router';
 
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/filter';
-import 'rxjs/add/operator/debounceTime';
+import 'rxjs/add/operator/auditTime';
 
 @Component({
   selector: 'loading',
@@ -27,7 +27,7 @@ export class LoadingComponent {
 
         Observable.create((o: any) => {
             this.observer = o;
-        }).debounceTime(200).subscribe((changes: any) => {
+        }).auditTime(200).subscribe((changes: any) => {
             if (changes) {
                 (<any>Object).assign(this.elementRef.nativeElement.style, changes);
                 this.visible = false;

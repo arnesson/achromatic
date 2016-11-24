@@ -12,7 +12,7 @@ var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
 var Observable_1 = require('rxjs/Observable');
 require('rxjs/add/operator/filter');
-require('rxjs/add/operator/debounceTime');
+require('rxjs/add/operator/auditTime');
 var LoadingComponent = (function () {
     function LoadingComponent(router, elementRef) {
         var _this = this;
@@ -25,7 +25,7 @@ var LoadingComponent = (function () {
         });
         Observable_1.Observable.create(function (o) {
             _this.observer = o;
-        }).debounceTime(200).subscribe(function (changes) {
+        }).auditTime(200).subscribe(function (changes) {
             if (changes) {
                 Object.assign(_this.elementRef.nativeElement.style, changes);
                 _this.visible = false;
