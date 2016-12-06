@@ -24,33 +24,33 @@ var LazyloadDirective = (function () {
             backgroundColor: 'rgba(0,0,0,0.05)',
             backgroundImage: 'url(data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7)'
         });
-        this.blur(this.placeholder);
-        this.lazyload(this.file);
+        if (this.placeholder) {
+            this.blur(this.placeholder);
+        }
+        if (this.file) {
+            this.lazyload(this.file);
+        }
     };
     LazyloadDirective.prototype.blur = function (file) {
         var _this = this;
-        if (file) {
-            var img_1 = new Image();
-            img_1.onload = function () {
-                var svg = btoa("\n<svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" width=\"" + img_1.width + "\" height=\"" + img_1.height + "\" viewBox=\"0 0 " + img_1.width + " " + img_1.height + "\">\n  <filter id=\"blur\" filterUnits=\"userSpaceOnUse\" color-interpolation-filters=\"sRGB\">\n    <feGaussianBlur stdDeviation=\"5 5\" edgeMode=\"duplicate\" />\n    <feComponentTransfer>\n      <feFuncA type=\"discrete\" tableValues=\"1 1\" />\n    </feComponentTransfer>\n  </filter>\n  <image filter=\"url(#blur)\" xlink:href=\"" + img_1.src + "\" x=\"0\" y=\"0\" height=\"100%\" width=\"100%\"/>\n</svg>");
-                Object.assign(_this.elementRef.nativeElement.style, {
-                    backgroundImage: "url(data:image/svg+xml;charset=utf-8;base64," + svg + ")"
-                });
-            };
-            img_1.src = this.base64(file);
-        }
+        var img = new Image();
+        img.onload = function () {
+            var svg = btoa("\n<svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" width=\"" + img.width + "\" height=\"" + img.height + "\" viewBox=\"0 0 " + img.width + " " + img.height + "\">\n<filter id=\"blur\" filterUnits=\"userSpaceOnUse\" color-interpolation-filters=\"sRGB\">\n<feGaussianBlur stdDeviation=\"5 5\" edgeMode=\"duplicate\" />\n<feComponentTransfer>\n  <feFuncA type=\"discrete\" tableValues=\"1 1\" />\n</feComponentTransfer>\n</filter>\n<image filter=\"url(#blur)\" xlink:href=\"" + img.src + "\" x=\"0\" y=\"0\" height=\"100%\" width=\"100%\"/>\n</svg>");
+            Object.assign(_this.elementRef.nativeElement.style, {
+                backgroundImage: "url(data:image/svg+xml;charset=utf-8;base64," + svg + ")"
+            });
+        };
+        img.src = this.base64(file);
     };
     LazyloadDirective.prototype.lazyload = function (file) {
         var _this = this;
-        if (file) {
-            var img_2 = new Image();
-            img_2.onload = function () {
-                Object.assign(_this.elementRef.nativeElement.style, {
-                    backgroundImage: "url(" + img_2.src + ")"
-                });
-            };
-            img_2.src = this.base64(file);
-        }
+        var img = new Image();
+        img.onload = function () {
+            Object.assign(_this.elementRef.nativeElement.style, {
+                backgroundImage: "url(" + img.src + ")"
+            });
+        };
+        img.src = this.base64(file);
     };
     LazyloadDirective.prototype.base64 = function (url) {
         var base64 = /^(?:[A-Z0-9+\/]{4})*(?:[A-Z0-9+\/]{2}==|[A-Z0-9+\/]{3}=|[A-Z0-9+\/]{4})$/i;
@@ -63,7 +63,14 @@ var LazyloadDirective = (function () {
     };
     LazyloadDirective.prototype.update = function (file) {
         this.file = file;
-        this.lazyload(file);
+        if (file) {
+            this.lazyload(file);
+        }
+        else {
+            Object.assign(this.elementRef.nativeElement.style, {
+                backgroundImage: 'url(data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7)'
+            });
+        }
     };
     __decorate([
         core_1.Input('lazyload'), 

@@ -24,43 +24,43 @@ export class LazyloadDirective implements OnInit {
 			backgroundImage: 'url(data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7)'
 		});
 
-		this.blur(this.placeholder);
-		this.lazyload(this.file);
+		if (this.placeholder) {
+			this.blur(this.placeholder);
+		}
+		if (this.file) {
+			this.lazyload(this.file);
+		}
 	}
 
 	private blur(file: string) {
-		if (file) {
-	        let img = new Image();
-			img.onload = () => {
-				let svg = btoa(`
+        let img = new Image();
+		img.onload = () => {
+			let svg = btoa(`
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="${img.width}" height="${img.height}" viewBox="0 0 ${img.width} ${img.height}">
-  <filter id="blur" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-    <feGaussianBlur stdDeviation="5 5" edgeMode="duplicate" />
-    <feComponentTransfer>
-      <feFuncA type="discrete" tableValues="1 1" />
-    </feComponentTransfer>
-  </filter>
-  <image filter="url(#blur)" xlink:href="${img.src}" x="0" y="0" height="100%" width="100%"/>
+<filter id="blur" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feGaussianBlur stdDeviation="5 5" edgeMode="duplicate" />
+<feComponentTransfer>
+  <feFuncA type="discrete" tableValues="1 1" />
+</feComponentTransfer>
+</filter>
+<image filter="url(#blur)" xlink:href="${img.src}" x="0" y="0" height="100%" width="100%"/>
 </svg>`);
 
-				(<any>Object).assign(this.elementRef.nativeElement.style, {
-					backgroundImage: `url(data:image/svg+xml;charset=utf-8;base64,${svg})`
-				});
-			};
-			img.src = this.base64(file);
-		}
+			(<any>Object).assign(this.elementRef.nativeElement.style, {
+				backgroundImage: `url(data:image/svg+xml;charset=utf-8;base64,${svg})`
+			});
+		};
+		img.src = this.base64(file);
 	}
 
 	private lazyload(file: string) {
-		if (file) {
-	        let img = new Image();
-			img.onload = () => {
-				(<any>Object).assign(this.elementRef.nativeElement.style, {
-					backgroundImage: `url(${img.src})`
-				});
-			};
-			img.src = this.base64(file);
-		}
+        let img = new Image();
+		img.onload = () => {
+			(<any>Object).assign(this.elementRef.nativeElement.style, {
+				backgroundImage: `url(${img.src})`
+			});
+		};
+		img.src = this.base64(file);
 	}
 
 	private base64(url: string): string {
@@ -73,8 +73,14 @@ export class LazyloadDirective implements OnInit {
 		}
 	}
 
-	public update(file: string): void {
+	public update(file?: string): void {
 		this.file = file;
-		this.lazyload(file);
+		if (file) {
+			this.lazyload(file);
+		} else {
+			(<any>Object).assign(this.elementRef.nativeElement.style, {
+				backgroundImage: 'url(data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7)'
+			});
+		}
 	}
 }
