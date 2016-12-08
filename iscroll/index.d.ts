@@ -7,7 +7,9 @@ interface IScroll {
     scrollTo (x: number, y: number, time?: number, easing?: any): void;
     currentPage: any;
     pages: any;
-	maxScrollX: number;
+	x: number;
+    y: number;
+    maxScrollX: number;
     maxScrollY: number;
 }
 
