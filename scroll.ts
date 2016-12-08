@@ -47,7 +47,7 @@ export class ScrollDirective implements OnDestroy {
     }
   }
 
-  public on(event: string, fn: Function) {
+  public on(event: string, fn: (scroller: IScroll) => void) {
     if (this.iscroll) {
       this.iscroll.on(event, function() {
         fn(this);
