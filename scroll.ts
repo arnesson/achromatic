@@ -21,10 +21,18 @@ export class ScrollDirective implements OnDestroy {
     });
   }
 
-  public x: number = this.iscroll.x;
-  public y: number = this.iscroll.y;
-  public maxScrollX: number = this.iscroll.maxScrollX;
-  public maxScrollY: number = this.iscroll.maxScrollY;
+  public x(): number {
+    return this.iscroll && this.iscroll.x;
+  }
+  public y(): number {
+    return this.iscroll && this.iscroll.y;
+  }
+  public maxScrollX(): number {
+    return this.iscroll && this.iscroll.maxScrollX;
+  }
+  public maxScrollY(): number {
+    return this.iscroll && this.iscroll.maxScrollY;
+  }
 
   public refresh() {
     if (this.iscroll) {

@@ -13,10 +13,6 @@ var iscroll_1 = require('./iscroll');
 var ScrollDirective = (function () {
     function ScrollDirective(elementRef) {
         this.elementRef = elementRef;
-        this.x = this.iscroll.x;
-        this.y = this.iscroll.y;
-        this.maxScrollX = this.iscroll.maxScrollX;
-        this.maxScrollY = this.iscroll.maxScrollY;
         this.iscroll = new iscroll_1.IScroll(this.elementRef.nativeElement, this.elementRef.nativeElement.parentNode, {
             scrollX: false,
             scrollY: true,
@@ -28,6 +24,18 @@ var ScrollDirective = (function () {
             fadeScrollbars: true
         });
     }
+    ScrollDirective.prototype.x = function () {
+        return this.iscroll && this.iscroll.x;
+    };
+    ScrollDirective.prototype.y = function () {
+        return this.iscroll && this.iscroll.y;
+    };
+    ScrollDirective.prototype.maxScrollX = function () {
+        return this.iscroll && this.iscroll.maxScrollX;
+    };
+    ScrollDirective.prototype.maxScrollY = function () {
+        return this.iscroll && this.iscroll.maxScrollY;
+    };
     ScrollDirective.prototype.refresh = function () {
         var _this = this;
         if (this.iscroll) {
