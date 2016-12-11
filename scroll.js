@@ -13,6 +13,10 @@ var iscroll_1 = require('./iscroll');
 var ScrollDirective = (function () {
     function ScrollDirective(elementRef) {
         this.elementRef = elementRef;
+        this.x = this.iscroll.x;
+        this.y = this.iscroll.y;
+        this.maxScrollX = this.iscroll.maxScrollX;
+        this.maxScrollY = this.iscroll.maxScrollY;
         this.iscroll = new iscroll_1.IScroll(this.elementRef.nativeElement, this.elementRef.nativeElement.parentNode, {
             scrollX: false,
             scrollY: true,
@@ -33,18 +37,27 @@ var ScrollDirective = (function () {
         }
     };
     ScrollDirective.prototype.scrollTo = function (x, y, time) {
+        var _this = this;
         if (this.iscroll) {
-            this.iscroll.scrollTo(x, y, time);
+            window.setTimeout(function () {
+                _this.iscroll.scrollTo(x, y, time);
+            }, 1);
         }
     };
     ScrollDirective.prototype.scrollToTop = function (time) {
+        var _this = this;
         if (this.iscroll) {
-            this.iscroll.scrollTo(0, 0, time);
+            window.setTimeout(function () {
+                _this.iscroll.scrollTo(0, 0, time);
+            }, 1);
         }
     };
     ScrollDirective.prototype.scrollToBottom = function (time) {
+        var _this = this;
         if (this.iscroll) {
-            this.iscroll.scrollTo(0, this.iscroll.maxScrollY, time);
+            window.setTimeout(function () {
+                _this.iscroll.scrollTo(0, _this.iscroll.maxScrollY, time);
+            }, 1);
         }
     };
     ScrollDirective.prototype.on = function (event, fn) {

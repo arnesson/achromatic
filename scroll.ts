@@ -21,6 +21,11 @@ export class ScrollDirective implements OnDestroy {
     });
   }
 
+  public x: number = this.iscroll.x;
+  public y: number = this.iscroll.y;
+  public maxScrollX: number = this.iscroll.maxScrollX;
+  public maxScrollY: number = this.iscroll.maxScrollY;
+
   public refresh() {
     if (this.iscroll) {
       (<any>window).setTimeout(() => {
@@ -31,19 +36,25 @@ export class ScrollDirective implements OnDestroy {
 
   public scrollTo(x: number, y: number, time?: number) {
     if (this.iscroll) {
-      this.iscroll.scrollTo(x, y, time);
+      (<any>window).setTimeout(() => {
+        this.iscroll.scrollTo(x, y, time);
+      }, 1);
     }
   }
 
   public scrollToTop(time?: number) {
     if (this.iscroll) {
-      this.iscroll.scrollTo(0, 0, time);
+      (<any>window).setTimeout(() => {
+        this.iscroll.scrollTo(0, 0, time);
+      }, 1);
     }
   }
 
   public scrollToBottom(time?: number) {
     if (this.iscroll) {
-      this.iscroll.scrollTo(0, this.iscroll.maxScrollY, time);
+      (<any>window).setTimeout(() => {
+        this.iscroll.scrollTo(0, this.iscroll.maxScrollY, time);
+      }, 1);
     }
   }
 
