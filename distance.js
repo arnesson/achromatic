@@ -51,7 +51,7 @@ var DistancePipe = (function () {
             return "";
         }
         var d = this.distance(f, t);
-        return d + " miles";
+        return d + " miles away";
     };
     DistancePipe = __decorate([
         core_1.Pipe({

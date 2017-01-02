@@ -51,6 +51,6 @@ export class DistancePipe implements PipeTransform {
 
     let d = this.distance(f, t);
 
-    return `${d} miles`;
+    return `${d} miles away`;
   }
 }
