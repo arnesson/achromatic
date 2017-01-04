@@ -16,9 +16,9 @@ $border-width:               0 !default;
 
 $body-bg:                    #fff !default;
 
-$font-size-root:             14px !default;
+$font-size-root:             16px !default;
 
-$line-height:                1.5 !default;
+$line-height:                1.5rem !default;
 
 $btn-padding-x:                  1rem !default;
 $btn-padding-y:                  .5rem !default;
@@ -238,7 +238,7 @@ loading {
         a {
             text-decoration: none;
             cursor: pointer;
-            padding: .75rem;
+            padding: 10px .6rem;
             -webkit-transition: opacity .1s ease, color .1s ease-out;
             transition: opacity .1s ease, color .1s ease-out;
         }
@@ -483,8 +483,8 @@ switch {
     -moz-transition-property: box-shadow,border;
     transition-property: box-shadow,border;
 
-    margin: -5px 0 -5px;
-    height: 31px;
+    margin: -4px 0 -4px;
+    height: 32px;
     width: 48px;
     display: block;
     position: relative;
