@@ -4,7 +4,6 @@ import { CommonModule } from '@angular/common';
 import { ActionsheetComponent } from './actionsheet';
 import { LazyloadDirective } from './lazyload';
 import { LoadingComponent } from './loading';
-import { NotifyComponent } from './notify';
 import { ScrollDirective } from './scroll';
 import { CarouselComponent } from './carousel';
 import { SwitchComponent } from './switch';
@@ -22,7 +21,6 @@ import { DistancePipe } from './distance';
     ActionsheetComponent,
     LazyloadDirective,
     LoadingComponent,
-    NotifyComponent,
     ScrollDirective,
     CarouselComponent,
     SwitchComponent,
@@ -36,7 +34,6 @@ import { DistancePipe } from './distance';
     ActionsheetComponent,
     LazyloadDirective,
     LoadingComponent,
-    NotifyComponent,
     ScrollDirective,
     CarouselComponent,
     SwitchComponent,

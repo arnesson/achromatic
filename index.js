@@ -13,7 +13,6 @@ var common_1 = require('@angular/common');
 var actionsheet_1 = require('./actionsheet');
 var lazyload_1 = require('./lazyload');
 var loading_1 = require('./loading');
-var notify_1 = require('./notify');
 var scroll_1 = require('./scroll');
 var carousel_1 = require('./carousel');
 var switch_1 = require('./switch');
@@ -34,7 +33,6 @@ var AchromaticModule = (function () {
                 actionsheet_1.ActionsheetComponent,
                 lazyload_1.LazyloadDirective,
                 loading_1.LoadingComponent,
-                notify_1.NotifyComponent,
                 scroll_1.ScrollDirective,
                 carousel_1.CarouselComponent,
                 switch_1.SwitchComponent,
@@ -48,7 +46,6 @@ var AchromaticModule = (function () {
                 actionsheet_1.ActionsheetComponent,
                 lazyload_1.LazyloadDirective,
                 loading_1.LoadingComponent,
-                notify_1.NotifyComponent,
                 scroll_1.ScrollDirective,
                 carousel_1.CarouselComponent,
                 switch_1.SwitchComponent,

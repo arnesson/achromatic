@@ -13,7 +13,8 @@ import 'rxjs/add/operator/auditTime';
 })
 export class LoadingComponent {
     private observer: any;
-    private visible: boolean = false;
+
+    public visible: boolean = false;
 
     constructor(
         private router: Router,
