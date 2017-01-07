@@ -19,6 +19,7 @@ export class LazyloadDirective implements OnInit {
 			width: typeof width === 'number' ? `${width}px` : width,
 			height: typeof height === 'number' ? `${height}px` : height,
 			display: 'block',
+			overflow: 'hidden',
 			backgroundPosition: 'center',
 			backgroundSize: 'cover',
 			backgroundColor: 'rgba(0,0,0,0.05)',

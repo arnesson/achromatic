@@ -29,7 +29,7 @@ $btn-padding-y-sm:               .25rem !default;
 $btn-padding-x-lg:               1.25rem !default;
 $btn-padding-y-lg:               .75rem !default;
 
-$input-padding-x:                1rem !default;
+$input-padding-x:                .75rem !default;
 $input-padding-y:                .5rem !default;
 
 $input-bg:                       $body-bg !default;
@@ -297,7 +297,7 @@ sidebar {
   outline: none;
 }
 .spacer {
-  padding: .75rem 1rem;
+  padding: .75rem;
 }
 .spacer + .spacer {
   padding-top: 0;
@@ -361,7 +361,7 @@ form {
 }
 
 .input-container [ng-messages] * {
-    padding: 0 1rem .5rem;
+    padding: 0 .75rem .5rem;
     font-size: .8rem;
     color: $brand-warning;
     font-weight: 500;
@@ -402,7 +402,7 @@ hr {
     border-bottom:.5px solid $input-border-color;
     text-transform: uppercase;
     font-size: .8rem;
-    padding: .75rem 1rem;
+    padding: .75rem;
     color:#999;
 }
 
@@ -412,7 +412,7 @@ hr {
 }
 
 .list-group-item {
-    padding: .75rem 1rem;
+    padding: .75rem;
 }
 a.list-group-item {
     text-decoration: none;
@@ -424,7 +424,7 @@ a.list-group-item:active, button.list-group-item:active {
 }
 
 .input-group {
-    padding: .75rem 1rem;
+    padding: .75rem;
     width:100%;
     border-bottom:.5px solid $input-border-color;
 }
@@ -438,7 +438,7 @@ input::-webkit-inner-spin-button {
         margin: -.75rem 0;
     }
     label + .form-control {
-        margin: -.75rem 0 -.75rem 1rem;
+        margin: -.75rem 0 -.75rem .75rem;
     }
     label {
         min-width: 80px;
@@ -453,13 +453,13 @@ input::-webkit-inner-spin-button {
         padding-top: 2px;
     }
     .form-control {
-        padding-left: 1rem;
-        padding-right: 1rem;
+        padding-left: .75rem;
+        padding-right: .75rem;
     }
 }
 .form-control {
     background: transparent !important;
-    padding: .75rem 1rem;
+    padding: .75rem;
     line-height: $line-height;
 }
 select.form-control:not([size]):not([multiple]) {
