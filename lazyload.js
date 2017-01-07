@@ -23,7 +23,6 @@ var LazyloadDirective = (function () {
             overflow: 'hidden',
             backgroundPosition: 'center',
             backgroundSize: 'cover',
-            backgroundColor: 'rgba(0,0,0,0.05)',
             backgroundImage: 'url(data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7)'
         });
         if (this.placeholder) {
