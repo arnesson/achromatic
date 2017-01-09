@@ -12,6 +12,7 @@ var core_1 = require('@angular/core');
 var LazyloadDirective = (function () {
     function LazyloadDirective(elementRef) {
         this.elementRef = elementRef;
+        this.loaded = false;
     }
     LazyloadDirective.prototype.ngOnInit = function () {
         var width = this.width || 'auto';
@@ -37,9 +38,11 @@ var LazyloadDirective = (function () {
         var img = new Image();
         img.onload = function () {
             var svg = btoa("\n<svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" width=\"" + img.width + "\" height=\"" + img.height + "\" viewBox=\"0 0 " + img.width + " " + img.height + "\">\n<filter id=\"blur\" filterUnits=\"userSpaceOnUse\" color-interpolation-filters=\"sRGB\">\n<feGaussianBlur stdDeviation=\"5 5\" edgeMode=\"duplicate\" />\n<feComponentTransfer>\n  <feFuncA type=\"discrete\" tableValues=\"1 1\" />\n</feComponentTransfer>\n</filter>\n<image filter=\"url(#blur)\" xlink:href=\"" + img.src + "\" x=\"0\" y=\"0\" height=\"100%\" width=\"100%\"/>\n</svg>");
-            Object.assign(_this.elementRef.nativeElement.style, {
-                backgroundImage: "url(data:image/svg+xml;charset=utf-8;base64," + svg + ")"
-            });
+            if (!_this.loaded) {
+                Object.assign(_this.elementRef.nativeElement.style, {
+                    backgroundImage: "url(data:image/svg+xml;charset=utf-8;base64," + svg + ")"
+                });
+            }
         };
         img.src = this.base64(file);
     };
@@ -47,6 +50,7 @@ var LazyloadDirective = (function () {
         var _this = this;
         var img = new Image();
         img.onload = function () {
+            _this.loaded = true;
             Object.assign(_this.elementRef.nativeElement.style, {
                 backgroundImage: "url(" + img.src + ")"
             });

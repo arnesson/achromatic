@@ -11,6 +11,8 @@ export class LazyloadDirective implements OnInit {
 	@Input('width') width: number | string;
 	@Input('height') height: number | string;
 
+	private loaded: boolean = false;
+
 	ngOnInit() {
 		let width = this.width || 'auto';
 		let height = this.height || 'auto';
@@ -47,9 +49,11 @@ export class LazyloadDirective implements OnInit {
 <image filter="url(#blur)" xlink:href="${img.src}" x="0" y="0" height="100%" width="100%"/>
 </svg>`);
 
-			(<any>Object).assign(this.elementRef.nativeElement.style, {
-				backgroundImage: `url(data:image/svg+xml;charset=utf-8;base64,${svg})`
-			});
+			if (!this.loaded) {
+				(<any>Object).assign(this.elementRef.nativeElement.style, {
+					backgroundImage: `url(data:image/svg+xml;charset=utf-8;base64,${svg})`
+				});
+			}
 		};
 		img.src = this.base64(file);
 	}
@@ -57,6 +61,7 @@ export class LazyloadDirective implements OnInit {
 	private lazyload(file: string) {
         let img = new Image();
 		img.onload = () => {
+			this.loaded = true;
 			(<any>Object).assign(this.elementRef.nativeElement.style, {
 				backgroundImage: `url(${img.src})`
 			});
