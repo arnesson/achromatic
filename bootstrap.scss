@@ -348,49 +348,8 @@ input.input-emboss {
     font-size: inherit;
 }
 
-form {
+form, label {
     margin:0;
-}
-
-.input-container [ng-messages] {
-    clear:both;
-}
-
-.input-container [ng-messages].ng-active {
-    border-top: .5px solid $brand-warning;
-}
-
-.input-container [ng-messages] * {
-    padding: 0 .75rem .5rem;
-    font-size: .8rem;
-    color: $brand-warning;
-    font-weight: 500;
-}
-.input-container [ng-messages] * {
-    -webkit-transition: opacity 0.2s linear, line-height 0.2s ease;
-    transition: opacity 0.2s linear, line-height 0.2s ease;
-    line-height:1.5rem;
-    opacity:1;
-}
-
-.input-container [ng-messages] *.ng-enter-prepare {
-    line-height:0rem;
-    opacity: 0;
-}
-
-.input-container [ng-messages] *.ng-enter {
-    line-height:0rem;
-    opacity:0;
-}
-
-.input-container [ng-messages] *.ng-enter-active, .input-container [ng-messages] *.ng-leave {
-    line-height:1.5rem;
-    opacity:1;
-}
-
-.input-container [ng-messages] *.ng-leave-active {
-    line-height:0rem;
-    opacity:0;
 }
 
 hr {
@@ -449,9 +408,6 @@ input::-webkit-inner-spin-button {
     }
 }
 .input-group-lg {
-    label {
-        padding-top: 2px;
-    }
     .form-control {
         padding-left: .75rem;
         padding-right: .75rem;
@@ -528,16 +484,6 @@ textarea {
 .center {
     display: block;
     text-align: -webkit-center;
-}
-
-.vertical-align-middle {
-    position: absolute;
-    top: 50%;
-    -webkit-transform: translateY(-50%);
-    transform: translateY(-50%);    
-}
-.list-group-item .pull-xs-right.vertical-align-middle {
-    right: 1rem;
 }
 
 a {
