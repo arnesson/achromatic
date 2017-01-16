@@ -40,7 +40,9 @@ var ScrollDirective = (function () {
         var _this = this;
         if (this.iscroll) {
             window.setTimeout(function () {
-                _this.iscroll.refresh();
+                if (_this.iscroll) {
+                    _this.iscroll.refresh();
+                }
             }, 1);
         }
     };
@@ -48,7 +50,9 @@ var ScrollDirective = (function () {
         var _this = this;
         if (this.iscroll) {
             window.setTimeout(function () {
-                _this.iscroll.scrollTo(x, y, time);
+                if (_this.iscroll) {
+                    _this.iscroll.scrollTo(x, y, time);
+                }
             }, 1);
         }
     };
@@ -56,7 +60,9 @@ var ScrollDirective = (function () {
         var _this = this;
         if (this.iscroll) {
             window.setTimeout(function () {
-                _this.iscroll.scrollTo(0, 0, time);
+                if (_this.iscroll) {
+                    _this.iscroll.scrollTo(0, 0, time);
+                }
             }, 1);
         }
     };
@@ -64,15 +70,19 @@ var ScrollDirective = (function () {
         var _this = this;
         if (this.iscroll) {
             window.setTimeout(function () {
-                _this.iscroll.scrollTo(0, _this.iscroll.maxScrollY, time);
+                if (_this.iscroll) {
+                    _this.iscroll.scrollTo(0, _this.iscroll.maxScrollY, time);
+                }
             }, 1);
         }
     };
     ScrollDirective.prototype.on = function (event, fn) {
         if (this.iscroll) {
-            this.iscroll.on(event, function () {
-                fn(this);
-            });
+            if (this.iscroll) {
+                this.iscroll.on(event, function () {
+                    fn(this);
+                });
+            }
         }
     };
     ScrollDirective.prototype.ngOnDestroy = function () {

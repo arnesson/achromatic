@@ -37,7 +37,9 @@ export class ScrollDirective implements OnDestroy {
   public refresh() {
     if (this.iscroll) {
       (<any>window).setTimeout(() => {
-        this.iscroll.refresh();
+        if (this.iscroll) {
+          this.iscroll.refresh();
+        }
       }, 1);
     }
   }
@@ -45,7 +47,9 @@ export class ScrollDirective implements OnDestroy {
   public scrollTo(x: number, y: number, time?: number) {
     if (this.iscroll) {
       (<any>window).setTimeout(() => {
-        this.iscroll.scrollTo(x, y, time);
+        if (this.iscroll) {
+          this.iscroll.scrollTo(x, y, time);
+        }
       }, 1);
     }
   }
@@ -53,7 +57,9 @@ export class ScrollDirective implements OnDestroy {
   public scrollToTop(time?: number) {
     if (this.iscroll) {
       (<any>window).setTimeout(() => {
-        this.iscroll.scrollTo(0, 0, time);
+        if (this.iscroll) {
+          this.iscroll.scrollTo(0, 0, time);
+        }
       }, 1);
     }
   }
@@ -61,16 +67,20 @@ export class ScrollDirective implements OnDestroy {
   public scrollToBottom(time?: number) {
     if (this.iscroll) {
       (<any>window).setTimeout(() => {
-        this.iscroll.scrollTo(0, this.iscroll.maxScrollY, time);
+        if (this.iscroll) {
+          this.iscroll.scrollTo(0, this.iscroll.maxScrollY, time);
+        }
       }, 1);
     }
   }
 
   public on(event: string, fn: (scroller: IScroll) => void) {
     if (this.iscroll) {
-      this.iscroll.on(event, function() {
-        fn(this);
-      });
+      if (this.iscroll) {
+        this.iscroll.on(event, function() {
+          fn(this);
+        });
+      }
     }
   }
 
