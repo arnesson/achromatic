@@ -1,9 +1,0 @@
-@media (min-width: 960px) {
-    -webkit-user-select: text;                  /* prevent text selection on md and up */
-}
-
-body {
-    *:focus {
-        outline: -webkit-focus-ring-color auto 5px !important;
-    }
-}
