@@ -508,23 +508,8 @@ a, button {
     color: rgba(0, 0, 0, 0.25) !important;
 }
 
-@if $IOS {
+@if $__IOS {
     body {
-        [platform="browser"], [platform="android"], [platform="!ios"] {
-            display:none;
-        }
-        app {
-            @keyframes app {
-                from { opacity: 0; }
-                to   { opacity: 1; }
-            }
-            @-webkit-keyframes app {
-                from { opacity: 0; }
-                to   { opacity: 1; }
-            }
-            -webkit-animation: app .3s;
-            animation: app .3s;
-        }
         .navbar-light, .navbar-dark {
             height: 65px;
             padding-top:20px;
@@ -543,87 +528,12 @@ a, button {
     }
 }
 
-@if $ANDROID {
-    body {
-        [platform="browser"], [platform="ios"], [platform="!android"] {
-            display:none;
-        }
-        app {
-            @keyframes app {
-                from { opacity: 0; }
-                to   { opacity: 1; }
-            }
-            @-webkit-keyframes app {
-                from { opacity: 0; }
-                to   { opacity: 1; }
-            }
-            -webkit-animation: app .3s;
-            animation: app .3s;
-        }
-    }
-}
-
-@if $IOS or $ANDROID {
-    body[transition="forward"] {
-        ng-view.ng-enter,
-        ng-view.ng-leave {
-            -webkit-transition: .6s cubic-bezier(0.36, 0.66, 0.04, 1);  
-            transition: .6s cubic-bezier(0.36, 0.66, 0.04, 1);
-            -webkit-transition-property: -webkit-transform;
-            transition-property: transform;
-            overflow: hidden;
-        }
-        ng-view.ng-enter, ng-view.ng-enter-prepare {
-            -webkit-transform: translate3d(100%, 0, 0);
-            transform: translate3d(100%, 0, 0);
-        }
-        ng-view.ng-enter.ng-enter-active, ng-view.ng-leave {
-            -webkit-transform: translate3d(0, 0, 0);
-            transform: translate3d(0, 0, 0);
-        }
-        ng-view.ng-leave.ng-leave-active {
-            -webkit-transform: translate3d(-20%, 0, 0);
-            transform: translate3d(-20%, 0, 0);
-        }
-    }
-
-    body[transition="back"] {
-        ng-view.ng-enter,
-        ng-view.ng-leave {
-            -webkit-transition: .6s cubic-bezier(0.36, 0.66, 0.04, 1);  
-            transition: .6s cubic-bezier(0.36, 0.66, 0.04, 1);
-            -webkit-transition-property: -webkit-transform;
-            transition-property: transform;
-            overflow: hidden;
-        }
-        ng-view.ng-enter, ng-view.ng-enter-prepare {
-            -webkit-transform: translate3d(-20%, 0, 0);
-            transform: translate3d(-20%, 0, 0);
-        }
-        ng-view.ng-enter.ng-enter-active {
-            -webkit-transform: translate3d(0, 0, 0);
-            transform: translate3d(0, 0, 0);
-        }
-        ng-view.ng-leave {
-            -webkit-transform: translate3d(0, 0, 0);
-            transform: translate3d(0, 0, 0);
-        }
-        ng-view.ng-leave.ng-leave-active {
-            -webkit-transform: translate3d(100%, 0, 0);
-            transform: translate3d(100%, 0, 0);
-        }
-    }
-}
-
-@if $BROWSER {
+@if $__BROWSER {
     @media (min-width: 960px) {
         -webkit-user-select: text;                  /* prevent text selection on md and up */
     }
 
     body {
-        [platform="ios"], [platform="android"], [platform="!browser"] {
-            display:none;
-        }
         *:focus {
             outline: -webkit-focus-ring-color auto 5px !important;
         }
