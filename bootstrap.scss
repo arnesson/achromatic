@@ -231,9 +231,13 @@ loading {
     overflow: hidden;
 
     .navbar {
-        border-bottom:.5px solid rgba(100,100,100,0.5);
+        border-bottom:1px solid rgba(100,100,100,0.5);
         height: 100%;
         padding: 0;
+
+        @media (-webkit-min-device-pixel-ratio: 2) {
+            border-bottom-width: .5px;
+        }
 
         a {
             text-decoration: none;
@@ -353,16 +357,24 @@ form, label {
 }
 
 hr {
-    border-bottom:.5px solid $input-border-color;
+    border-bottom:1px solid $input-border-color;
     margin: 0;
+
+    @media (-webkit-min-device-pixel-ratio: 2) {
+        border-bottom-width: .5px;
+    }
 }
 
 .subheader {
-    border-bottom:.5px solid $input-border-color;
+    border-bottom:1px solid $input-border-color;
     text-transform: uppercase;
     font-size: .8rem;
     padding: .75rem;
     color:#999;
+
+    @media (-webkit-min-device-pixel-ratio: 2) {
+        border-bottom-width: .5px;
+    }
 }
 
 .divider {
@@ -385,7 +397,11 @@ a.list-group-item:active, button.list-group-item:active {
 .input-group {
     padding: .75rem;
     width:100%;
-    border-bottom:.5px solid $input-border-color;
+    border-bottom:1px solid $input-border-color;
+
+    @media (-webkit-min-device-pixel-ratio: 2) {
+        border-bottom-width: .5px;
+    }
 }
 .input-group select,
 input::-webkit-outer-spin-button,
@@ -469,8 +485,12 @@ textarea {
 }
 
 .input-container {
-    border:.5px solid $input-border-color;
+    border:1px solid $input-border-color;
     border-radius: 10px;
+
+    @media (-webkit-min-device-pixel-ratio: 2) {
+        border-bottom-width: .5px;
+    }
 
     :last-child {
         border-bottom-width:0;
