@@ -135,15 +135,14 @@ app {
   left:0;
 }
 .view {
-  min-height: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
   display: block;
-  padding-top: 45px;
+  margin-top: 45px;
 }
-// TODO: bake this into iscroll as e.g. offset option
-.iScrollVerticalScrollbar.iScrollLoneScrollbar {
-  top: 47px !important;
-}
-//
 statusbar {
     height: 0px;
     background: transparent;
