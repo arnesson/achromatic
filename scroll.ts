@@ -1,12 +1,13 @@
-import { Directive, ElementRef, NgZone } from '@angular/core';
+import { Directive, ElementRef, NgZone, OnDestroy } from '@angular/core';
 
 import { Observable } from 'rxjs/Observable';
 
 @Directive({
   selector: '[scroll]'
 })
-export class ScrollDirective {
+export class ScrollDirective implements OnDestroy {
   private lock: boolean = false;
+  private destroy: any;
 
   constructor(
     private elementRef: ElementRef,
@@ -37,9 +38,10 @@ export class ScrollDirective {
       }
     };
     this.elementRef.nativeElement.addEventListener('scroll', fn, false);
-    return () => {
+    this.destroy = () => {
       this.elementRef.nativeElement.removeEventListener('scroll', fn, false);
     };
+    return this.destroy;
   });
 
   public x(): number {
@@ -65,5 +67,11 @@ export class ScrollDirective {
 
   public bottom() {
     this.elementRef.nativeElement.scrollTo(this.x(), this.max_y());
+  }
+
+  ngOnDestroy() {
+    if (this.destroy) {
+      this.destroy();
+    }
   }
 }

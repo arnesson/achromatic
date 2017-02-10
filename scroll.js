@@ -32,9 +32,10 @@ var ScrollDirective = (function () {
                 }
             };
             _this.elementRef.nativeElement.addEventListener('scroll', fn, false);
-            return function () {
+            _this.destroy = function () {
                 _this.elementRef.nativeElement.removeEventListener('scroll', fn, false);
             };
+            return _this.destroy;
         });
         Object.assign(this.elementRef.nativeElement.style, {
             overflowY: 'auto',
@@ -64,6 +65,11 @@ var ScrollDirective = (function () {
     };
     ScrollDirective.prototype.bottom = function () {
         this.elementRef.nativeElement.scrollTo(this.x(), this.max_y());
+    };
+    ScrollDirective.prototype.ngOnDestroy = function () {
+        if (this.destroy) {
+            this.destroy();
+        }
     };
     ScrollDirective = __decorate([
         core_1.Directive({
