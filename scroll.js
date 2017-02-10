@@ -9,9 +9,34 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var Observable_1 = require('rxjs/Observable');
+require('rxjs/add/operator/create');
 var ScrollDirective = (function () {
-    function ScrollDirective(elementRef) {
+    function ScrollDirective(elementRef, zone) {
+        var _this = this;
         this.elementRef = elementRef;
+        this.zone = zone;
+        this.lock = false;
+        this.scroll = Observable_1.Observable.create(function (observer) {
+            var fn = function (emit) {
+                _this.last_x = _this.x();
+                _this.last_y = _this.y();
+                if (!_this.lock) {
+                    _this.lock = true;
+                    _this.zone.run(function () {
+                        observer.next({
+                            x: _this.last_x,
+                            y: _this.last_y
+                        });
+                        _this.lock = false;
+                    });
+                }
+            };
+            _this.elementRef.nativeElement.addEventListener('scroll', fn, false);
+            return function () {
+                _this.elementRef.nativeElement.removeEventListener('scroll', fn, false);
+            };
+        });
         Object.assign(this.elementRef.nativeElement.style, {
             overflowY: 'auto',
             overflowX: 'hidden',
@@ -20,13 +45,32 @@ var ScrollDirective = (function () {
             contain: 'size style layout'
         });
     }
-    ScrollDirective.prototype.ngOnDestroy = function () {
+    ScrollDirective.prototype.x = function () {
+        return this.elementRef.nativeElement.scrollLeft;
+    };
+    ScrollDirective.prototype.y = function () {
+        return this.elementRef.nativeElement.scrollTop;
+    };
+    ScrollDirective.prototype.max_x = function () {
+        return this.elementRef.nativeElement.scrollWidth - this.elementRef.nativeElement.clientWidth;
+    };
+    ScrollDirective.prototype.max_y = function () {
+        return this.elementRef.nativeElement.scrollHeight - this.elementRef.nativeElement.clientHeight;
+    };
+    ScrollDirective.prototype.to = function (x, y) {
+        this.elementRef.nativeElement.scrollTo(x, y);
+    };
+    ScrollDirective.prototype.top = function () {
+        this.elementRef.nativeElement.scrollTo(this.x(), 0);
+    };
+    ScrollDirective.prototype.bottom = function () {
+        this.elementRef.nativeElement.scrollTo(this.x(), this.max_y());
     };
     ScrollDirective = __decorate([
         core_1.Directive({
             selector: '[scroll]'
         }), 
-        __metadata('design:paramtypes', [core_1.ElementRef])
+        __metadata('design:paramtypes', [core_1.ElementRef, core_1.NgZone])
     ], ScrollDirective);
     return ScrollDirective;
 }());
