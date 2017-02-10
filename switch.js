@@ -11,7 +11,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var forms_1 = require('@angular/forms');
-var iscroll_1 = require('./iscroll');
 var noop = function () { };
 var SwitchComponent = (function () {
     function SwitchComponent(elementRef) {
@@ -40,7 +39,6 @@ var SwitchComponent = (function () {
     SwitchComponent.prototype.writeValue = function (v) {
         if (v !== this.innerValue) {
             this.innerValue = v;
-            this.iscroll.goToPage(v ? 0 : 1, 0, 0);
             if (v) {
                 this.elementRef.nativeElement.classList.add('active');
             }
@@ -59,32 +57,23 @@ var SwitchComponent = (function () {
     };
     SwitchComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.elementRef.nativeElement.addEventListener('click', function () {
-            _this.iscroll.goToPage(_this.value ? 1 : 0, 0);
-        });
-        this.iscroll = new iscroll_1.IScroll(this.elementRef.nativeElement.querySelector(".scroller"), this.elementRef.nativeElement, {
-            scrollX: true,
-            scrollY: false,
-            freeScroll: false,
-            momentum: false,
-            snap: true,
-            snapSpeed: 500,
-            bounce: false,
-            eventPassthrough: 'vertical'
-        });
-        this.iscroll.on('scrollEnd', function () {
-            _this.value = !_this.iscroll.currentPage.pageX;
+        var fn = function () {
             if (_this.value) {
                 _this.elementRef.nativeElement.classList.add('active');
             }
             else {
                 _this.elementRef.nativeElement.classList.remove('active');
             }
-        });
+        };
+        this.elementRef.nativeElement.addEventListener('click', fn);
+        this.cleanup = function () {
+            _this.elementRef.nativeElement.removeEventListener('click', fn);
+        };
     };
     SwitchComponent.prototype.ngOnDestroy = function () {
-        this.iscroll.destroy();
-        this.iscroll = null;
+        if (this.cleanup) {
+            this.cleanup();
+        }
     };
     SwitchComponent = __decorate([
         core_1.Component({

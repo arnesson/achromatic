@@ -5,7 +5,6 @@ import { ActionsheetComponent } from './actionsheet';
 import { LazyloadDirective } from './lazyload';
 import { LoadingComponent } from './loading';
 import { ScrollDirective } from './scroll';
-import { CarouselComponent } from './carousel';
 import { SwitchComponent } from './switch';
 import { StatusbarComponent } from './statusbar';
 import { TextareaDirective } from './textarea';
@@ -22,7 +21,6 @@ import { DistancePipe } from './distance';
     LazyloadDirective,
     LoadingComponent,
     ScrollDirective,
-    CarouselComponent,
     SwitchComponent,
     StatusbarComponent,
     TextareaDirective,
@@ -35,7 +33,6 @@ import { DistancePipe } from './distance';
     LazyloadDirective,
     LoadingComponent,
     ScrollDirective,
-    CarouselComponent,
     SwitchComponent,
     StatusbarComponent,
     TextareaDirective,

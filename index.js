@@ -14,7 +14,6 @@ var actionsheet_1 = require('./actionsheet');
 var lazyload_1 = require('./lazyload');
 var loading_1 = require('./loading');
 var scroll_1 = require('./scroll');
-var carousel_1 = require('./carousel');
 var switch_1 = require('./switch');
 var statusbar_1 = require('./statusbar');
 var textarea_1 = require('./textarea');
@@ -34,7 +33,6 @@ var AchromaticModule = (function () {
                 lazyload_1.LazyloadDirective,
                 loading_1.LoadingComponent,
                 scroll_1.ScrollDirective,
-                carousel_1.CarouselComponent,
                 switch_1.SwitchComponent,
                 statusbar_1.StatusbarComponent,
                 textarea_1.TextareaDirective,
@@ -47,7 +45,6 @@ var AchromaticModule = (function () {
                 lazyload_1.LazyloadDirective,
                 loading_1.LoadingComponent,
                 scroll_1.ScrollDirective,
-                carousel_1.CarouselComponent,
                 switch_1.SwitchComponent,
                 statusbar_1.StatusbarComponent,
                 textarea_1.TextareaDirective,

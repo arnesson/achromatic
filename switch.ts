@@ -3,8 +3,6 @@
 import { Component, forwardRef, ElementRef, OnInit, OnDestroy } from '@angular/core';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 
-import { IScroll } from './iscroll';
-
 const noop = () => {};
 
 @Component({
@@ -25,8 +23,8 @@ const noop = () => {};
   ]
 })
 export class SwitchComponent implements ControlValueAccessor, OnInit, OnDestroy {
-  private iscroll: IScroll;
   private innerValue: any;
+  private cleanup: any;
 
   constructor(private elementRef: ElementRef) {}
 
@@ -51,7 +49,6 @@ export class SwitchComponent implements ControlValueAccessor, OnInit, OnDestroy 
   writeValue(v: any) {
     if (v !== this.innerValue) {
       this.innerValue = v;
-      this.iscroll.goToPage(v ? 0 : 1, 0, 0);
 
       if (v) {
         this.elementRef.nativeElement.classList.add('active');
@@ -72,34 +69,22 @@ export class SwitchComponent implements ControlValueAccessor, OnInit, OnDestroy 
   }
 
   ngOnInit() {
-    this.elementRef.nativeElement.addEventListener('click', () => {
-      this.iscroll.goToPage(this.value ? 1 : 0, 0);
-    });
-
-    this.iscroll = new IScroll(this.elementRef.nativeElement.querySelector(".scroller"), this.elementRef.nativeElement, {
-      scrollX: true,
-      scrollY: false,
-      freeScroll: false,
-      momentum: false,
-      snap: true,
-      snapSpeed: 500,
-      bounce: false,
-      eventPassthrough: 'vertical'
-    });
-
-    this.iscroll.on('scrollEnd', () => {
-      this.value = !this.iscroll.currentPage.pageX;
-
+    let fn = () => {
       if (this.value) {
         this.elementRef.nativeElement.classList.add('active');
       } else {
         this.elementRef.nativeElement.classList.remove('active');
       }
-    });
+    };
+    this.elementRef.nativeElement.addEventListener('click', fn);
+    this.cleanup = () => {
+      this.elementRef.nativeElement.removeEventListener('click', fn);
+    };
   }
 
   ngOnDestroy() {
-    this.iscroll.destroy();
-    this.iscroll = null;
+    if (this.cleanup) {
+      this.cleanup();
+    }
   }
 }
