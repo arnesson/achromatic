@@ -10,7 +10,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var Observable_1 = require('rxjs/Observable');
-require('rxjs/add/operator/create');
 var ScrollDirective = (function () {
     function ScrollDirective(elementRef, zone) {
         var _this = this;
@@ -19,14 +18,14 @@ var ScrollDirective = (function () {
         this.lock = false;
         this.scroll = Observable_1.Observable.create(function (observer) {
             var fn = function (emit) {
-                _this.last_x = _this.x();
-                _this.last_y = _this.y();
                 if (!_this.lock) {
                     _this.lock = true;
                     _this.zone.run(function () {
                         observer.next({
-                            x: _this.last_x,
-                            y: _this.last_y
+                            x: _this.x(),
+                            y: _this.y(),
+                            max_x: _this.max_x(),
+                            max_y: _this.max_y()
                         });
                         _this.lock = false;
                     });

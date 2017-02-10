@@ -1,15 +1,12 @@
 import { Directive, ElementRef, NgZone } from '@angular/core';
 
 import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/create';
 
 @Directive({
   selector: '[scroll]'
 })
 export class ScrollDirective {
   private lock: boolean = false;
-  private last_x: number;
-  private last_y: number;
 
   constructor(
     private elementRef: ElementRef,
@@ -26,15 +23,14 @@ export class ScrollDirective {
 
   scroll: Observable<any> = Observable.create((observer: any) => {
     let fn = (emit: any) => {
-      this.last_x = this.x();
-      this.last_y = this.y();
-
       if (!this.lock) {
         this.lock = true;
         this.zone.run(() => {
           observer.next({
-            x: this.last_x,
-            y: this.last_y
+            x: this.x(),
+            y: this.y(),
+            max_x: this.max_x(),
+            max_y: this.max_y()
           });
           this.lock = false;
         });
