@@ -8,7 +8,7 @@ const noop = () => {};
 @Component({
   selector: 'switch',
   template: `
-    <div class="scroller" style="position:absolute;height:28px;width:62px;top:0;left:0">
+    <div style="position:absolute;height:28px;width:62px;top:0;left:0">
       <div style="height:28px;width:17px;top:0;left:0;position:absolute;"></div>
       <div class="handle" style="height:28px;width:28px;background: #fff;border:1px solid #ddd;border-radius: 100px;top:0;left:0px;position:absolute;-webkit-transition: all .2s ease;transition: all .2s ease;"></div>
       <div style="height:28px;width:17px;top:0;left:45px;position:absolute;"></div>

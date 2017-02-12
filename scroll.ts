@@ -58,15 +58,16 @@ export class ScrollDirective implements OnDestroy {
   }
 
   public to(x: number, y: number) {
-    this.elementRef.nativeElement.scrollTo(x, y);
+    this.elementRef.nativeElement.scrollLeft = x;
+    this.elementRef.nativeElement.scrollTop = y;
   }
 
   public top() {
-    this.elementRef.nativeElement.scrollTo(this.x(), 0);
+    this.elementRef.nativeElement.scrollTop = 0;
   }
 
   public bottom() {
-    this.elementRef.nativeElement.scrollTo(this.x(), this.max_y());
+    this.elementRef.nativeElement.scrollTop = this.max_y();
   }
 
   ngOnDestroy() {

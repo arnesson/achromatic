@@ -58,13 +58,14 @@ var ScrollDirective = (function () {
         return this.elementRef.nativeElement.scrollHeight - this.elementRef.nativeElement.clientHeight;
     };
     ScrollDirective.prototype.to = function (x, y) {
-        this.elementRef.nativeElement.scrollTo(x, y);
+        this.elementRef.nativeElement.scrollLeft = x;
+        this.elementRef.nativeElement.scrollTop = y;
     };
     ScrollDirective.prototype.top = function () {
-        this.elementRef.nativeElement.scrollTo(this.x(), 0);
+        this.elementRef.nativeElement.scrollTop = 0;
     };
     ScrollDirective.prototype.bottom = function () {
-        this.elementRef.nativeElement.scrollTo(this.x(), this.max_y());
+        this.elementRef.nativeElement.scrollTop = this.max_y();
     };
     ScrollDirective.prototype.ngOnDestroy = function () {
         if (this.destroy) {
