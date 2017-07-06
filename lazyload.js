@@ -46,16 +46,36 @@ var LazyloadDirective = (function () {
         };
         img.src = this.base64(file);
     };
+    LazyloadDirective.prototype.in_viewport = function (element) {
+        var rect = element.getBoundingClientRect();
+        return (rect.top < (window.innerHeight || document.documentElement.clientHeight) &&
+            rect.bottom > 0);
+    };
     LazyloadDirective.prototype.lazyload = function (file) {
         var _this = this;
-        var img = new Image();
-        img.onload = function () {
-            _this.loaded = true;
-            Object.assign(_this.elementRef.nativeElement.style, {
-                backgroundImage: "url(" + img.src + ")"
-            });
+        var load = function () {
+            var img = new Image();
+            img.onload = function () {
+                _this.loaded = true;
+                Object.assign(_this.elementRef.nativeElement.style, {
+                    backgroundImage: "url(" + img.src + ")"
+                });
+            };
+            img.src = _this.base64(file);
         };
-        img.src = this.base64(file);
+        if (this.in_viewport(this.elementRef.nativeElement)) {
+            load();
+        }
+        else {
+            var scroll_1 = (document.querySelector('[scroll]') || window);
+            var listener_1 = function () {
+                if (_this.in_viewport(_this.elementRef.nativeElement)) {
+                    load();
+                    scroll_1.removeEventListener("scroll", listener_1);
+                }
+            };
+            scroll_1.addEventListener("scroll", listener_1);
+        }
     };
     LazyloadDirective.prototype.base64 = function (url) {
         var base64 = /^(?:[A-Z0-9+\/]{4})*(?:[A-Z0-9+\/]{2}==|[A-Z0-9+\/]{3}=|[A-Z0-9+\/]{4})$/i;

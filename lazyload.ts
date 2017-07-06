@@ -58,15 +58,37 @@ export class LazyloadDirective implements OnInit {
 		img.src = this.base64(file);
 	}
 
+	private in_viewport(element: any) {
+	  let rect = element.getBoundingClientRect();
+	  return (
+	    rect.top < ((<any>window).innerHeight || (<any>document).documentElement.clientHeight) &&
+	    rect.bottom > 0
+	  );
+	}
+
 	private lazyload(file: string) {
-        let img = new Image();
-		img.onload = () => {
-			this.loaded = true;
-			(<any>Object).assign(this.elementRef.nativeElement.style, {
-				backgroundImage: `url(${img.src})`
-			});
-		};
-		img.src = this.base64(file);
+		let load = () => {
+	        let img = new Image();
+			img.onload = () => {
+				this.loaded = true;
+				(<any>Object).assign(this.elementRef.nativeElement.style, {
+					backgroundImage: `url(${img.src})`
+				});
+			};
+			img.src = this.base64(file);
+		}
+		if (this.in_viewport(this.elementRef.nativeElement)) {
+			load();
+		} else {
+			let scroll = ((<any>document).querySelector('[scroll]') || (<any>window));
+			let listener = () => {
+				if (this.in_viewport(this.elementRef.nativeElement)) {
+					load();
+					scroll.removeEventListener("scroll", listener);
+				}
+			};
+			scroll.addEventListener("scroll", listener);
+		}
 	}
 
 	private base64(url: string): string {
