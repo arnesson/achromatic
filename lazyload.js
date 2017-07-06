@@ -10,8 +10,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var LazyloadDirective = (function () {
-    function LazyloadDirective(elementRef) {
+    function LazyloadDirective(elementRef, renderer) {
         this.elementRef = elementRef;
+        this.renderer = renderer;
         this.loaded = false;
     }
     LazyloadDirective.prototype.ngOnInit = function () {
@@ -60,6 +61,7 @@ var LazyloadDirective = (function () {
                 Object.assign(_this.elementRef.nativeElement.style, {
                     backgroundImage: "url(" + img.src + ")"
                 });
+                _this.renderer.setElementClass(_this.elementRef.nativeElement, 'loaded', true);
             };
             img.src = _this.base64(file);
         };
@@ -117,7 +119,7 @@ var LazyloadDirective = (function () {
         core_1.Directive({
             selector: '[lazyload]'
         }), 
-        __metadata('design:paramtypes', [core_1.ElementRef])
+        __metadata('design:paramtypes', [core_1.ElementRef, core_1.Renderer])
     ], LazyloadDirective);
     return LazyloadDirective;
 }());

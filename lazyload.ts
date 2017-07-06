@@ -1,10 +1,13 @@
-import { Directive, ElementRef, Input, OnInit } from '@angular/core';
+import { Directive, ElementRef, Renderer, Input, OnInit } from '@angular/core';
 
 @Directive({
 	selector: '[lazyload]'
 })
 export class LazyloadDirective implements OnInit {
-	constructor(private elementRef: ElementRef) {}
+	constructor(
+		private elementRef: ElementRef,
+		private renderer: Renderer
+	) {}
 
 	@Input('lazyload') file: string;
 	@Input('placeholder') placeholder: string;
@@ -74,6 +77,7 @@ export class LazyloadDirective implements OnInit {
 				(<any>Object).assign(this.elementRef.nativeElement.style, {
 					backgroundImage: `url(${img.src})`
 				});
+				this.renderer.setElementClass(this.elementRef.nativeElement, 'loaded', true);
 			};
 			img.src = this.base64(file);
 		}
