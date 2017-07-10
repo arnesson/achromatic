@@ -1,6 +1,7 @@
 import { Directive, ElementRef, NgZone, OnDestroy } from '@angular/core';
 
 import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/share';
 
 @Directive({
   selector: '[scroll]'
@@ -22,7 +23,7 @@ export class ScrollDirective implements OnDestroy {
     });
   }
 
-  scroll: Observable<any> = Observable.create((observer: any) => {
+  public scroll: Observable<any> = Observable.create((observer: any) => {
     let fn = (emit: any) => {
       if (!this.lock) {
         this.lock = true;
@@ -37,12 +38,12 @@ export class ScrollDirective implements OnDestroy {
         });
       }
     };
-    this.elementRef.nativeElement.addEventListener('scroll', fn, false);
+    this.elementRef.nativeElement.addEventListener('scroll', fn, {passive: true});
     this.destroy = () => {
-      this.elementRef.nativeElement.removeEventListener('scroll', fn, false);
+      this.elementRef.nativeElement.removeEventListener('scroll', fn, {passive: true});
     };
     return this.destroy;
-  });
+  }).share();
 
   public x(): number {
     return this.elementRef.nativeElement.scrollLeft;

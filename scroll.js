@@ -10,6 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var Observable_1 = require('rxjs/Observable');
+require('rxjs/add/operator/share');
 var ScrollDirective = (function () {
     function ScrollDirective(elementRef, zone) {
         var _this = this;
@@ -31,12 +32,12 @@ var ScrollDirective = (function () {
                     });
                 }
             };
-            _this.elementRef.nativeElement.addEventListener('scroll', fn, false);
+            _this.elementRef.nativeElement.addEventListener('scroll', fn, { passive: true });
             _this.destroy = function () {
-                _this.elementRef.nativeElement.removeEventListener('scroll', fn, false);
+                _this.elementRef.nativeElement.removeEventListener('scroll', fn, { passive: true });
             };
             return _this.destroy;
-        });
+        }).share();
         Object.assign(this.elementRef.nativeElement.style, {
             overflowY: 'auto',
             overflowX: 'hidden',

@@ -1,9 +1,11 @@
-import { Directive, ElementRef, Renderer, Input, OnInit } from '@angular/core';
+import { Directive, ElementRef, Renderer, Input, OnInit, OnDestroy } from '@angular/core';
+
+import { Observable } from 'rxjs/Observable';
 
 @Directive({
 	selector: '[lazyload]'
 })
-export class LazyloadDirective implements OnInit {
+export class LazyloadDirective implements OnInit, OnDestroy {
 	constructor(
 		private elementRef: ElementRef,
 		private renderer: Renderer
@@ -13,8 +15,10 @@ export class LazyloadDirective implements OnInit {
 	@Input('placeholder') placeholder: string;
 	@Input('width') width: number | string;
 	@Input('height') height: number | string;
+	@Input('trigger') trigger: Observable<any>;
 
 	private loaded: boolean = false;
+	private sub: any;
 
 	ngOnInit() {
 		let width = this.width || 'auto';
@@ -81,17 +85,19 @@ export class LazyloadDirective implements OnInit {
 			};
 			img.src = this.base64(file);
 		}
-		if (this.in_viewport(this.elementRef.nativeElement)) {
-			load();
+		if (this.trigger) {
+			if (this.in_viewport(this.elementRef.nativeElement)) {
+				load();
+			} else {
+				this.sub = this.trigger.subscribe(() => {
+					if (this.in_viewport(this.elementRef.nativeElement)) {
+						load();
+						this.sub.unsubscribe();
+					}
+				});
+			}
 		} else {
-			let scroll = ((<any>document).querySelector('[scroll]') || (<any>window));
-			let listener = () => {
-				if (this.in_viewport(this.elementRef.nativeElement)) {
-					load();
-					scroll.removeEventListener("scroll", listener);
-				}
-			};
-			scroll.addEventListener("scroll", listener);
+			load();
 		}
 	}
 
@@ -115,4 +121,10 @@ export class LazyloadDirective implements OnInit {
 			});
 		}
 	}
+
+	ngOnDestroy() {
+	    if (this.sub) {
+	      	this.sub.unsubscribe();
+	    }
+  	}
 }

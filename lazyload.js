@@ -9,6 +9,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var Observable_1 = require('rxjs/Observable');
 var LazyloadDirective = (function () {
     function LazyloadDirective(elementRef, renderer) {
         this.elementRef = elementRef;
@@ -65,18 +66,21 @@ var LazyloadDirective = (function () {
             };
             img.src = _this.base64(file);
         };
-        if (this.in_viewport(this.elementRef.nativeElement)) {
-            load();
+        if (this.trigger) {
+            if (this.in_viewport(this.elementRef.nativeElement)) {
+                load();
+            }
+            else {
+                this.sub = this.trigger.subscribe(function () {
+                    if (_this.in_viewport(_this.elementRef.nativeElement)) {
+                        load();
+                        _this.sub.unsubscribe();
+                    }
+                });
+            }
         }
         else {
-            var scroll_1 = (document.querySelector('[scroll]') || window);
-            var listener_1 = function () {
-                if (_this.in_viewport(_this.elementRef.nativeElement)) {
-                    load();
-                    scroll_1.removeEventListener("scroll", listener_1);
-                }
-            };
-            scroll_1.addEventListener("scroll", listener_1);
+            load();
         }
     };
     LazyloadDirective.prototype.base64 = function (url) {
@@ -99,6 +103,11 @@ var LazyloadDirective = (function () {
             });
         }
     };
+    LazyloadDirective.prototype.ngOnDestroy = function () {
+        if (this.sub) {
+            this.sub.unsubscribe();
+        }
+    };
     __decorate([
         core_1.Input('lazyload'), 
         __metadata('design:type', String)
@@ -115,6 +124,10 @@ var LazyloadDirective = (function () {
         core_1.Input('height'), 
         __metadata('design:type', Object)
     ], LazyloadDirective.prototype, "height", void 0);
+    __decorate([
+        core_1.Input('trigger'), 
+        __metadata('design:type', Observable_1.Observable)
+    ], LazyloadDirective.prototype, "trigger", void 0);
     LazyloadDirective = __decorate([
         core_1.Directive({
             selector: '[lazyload]'
