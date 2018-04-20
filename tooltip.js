@@ -24,7 +24,7 @@ var TooltipContent = (function () {
         this.top = -100000;
         this.left = -100000;
         this.isIn = false;
-        this.isFade = false;
+        this.isFade = true;
     }
     // -------------------------------------------------------------------------
     // Lifecycle callbacks

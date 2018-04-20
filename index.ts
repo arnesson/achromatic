@@ -44,6 +44,9 @@ import { Tooltip, TooltipContent } from './tooltip';
     DistancePipe,
     Tooltip,
     TooltipContent
+  ],
+  entryComponents: [
+    TooltipContent
   ]
 })
 export class AchromaticModule {}

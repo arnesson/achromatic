@@ -56,6 +56,9 @@ var AchromaticModule = (function () {
                 distance_1.DistancePipe,
                 tooltip_1.Tooltip,
                 tooltip_1.TooltipContent
+            ],
+            entryComponents: [
+                tooltip_1.TooltipContent
             ]
         }), 
         __metadata('design:paramtypes', [])

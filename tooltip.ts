@@ -44,7 +44,7 @@ export class TooltipContent implements AfterViewInit {
     top: number = -100000;
     left: number = -100000;
     isIn: boolean = false;
-    isFade: boolean = false;
+    isFade: boolean = true;
 
     // -------------------------------------------------------------------------
     // Constructor
