@@ -23,7 +23,7 @@ var TooltipContent = (function () {
         // -------------------------------------------------------------------------
         this.top = -100000;
         this.left = -100000;
-        this.isIn = false;
+        this.isShow = false;
         this.isFade = true;
     }
     // -------------------------------------------------------------------------
@@ -42,14 +42,14 @@ var TooltipContent = (function () {
         var p = this.positionElements(this.hostElement, this.element.nativeElement.children[0], this.placement);
         this.top = p.top;
         this.left = p.left;
-        this.isIn = true;
+        this.isShow = true;
         if (this.animation)
             this.isFade = true;
     };
     TooltipContent.prototype.hide = function () {
         this.top = -100000;
         this.left = -100000;
-        this.isIn = true;
+        this.isShow = false;
         if (this.animation)
             this.isFade = false;
     };
@@ -178,7 +178,7 @@ var TooltipContent = (function () {
     TooltipContent = __decorate([
         core_1.Component({
             selector: "tooltip-content",
-            template: "\n<div class=\"tooltip tooltip-{{ placement }} show\"\n     [style.top]=\"top + 'px'\"\n     [style.left]=\"left + 'px'\"\n     [class.in]=\"isIn\"\n     [class.fade]=\"isFade\"\n     role=\"tooltip\">\n    <div class=\"tooltip-inner\">\n        <ng-content></ng-content>\n        {{ content }}\n    </div> \n</div>\n"
+            template: "\n<div class=\"tooltip tooltip-{{ placement }}\"\n     [style.top]=\"top + 'px'\"\n     [style.left]=\"left + 'px'\"\n     [class.show]=\"isShow\"\n     [class.fade]=\"isFade\"\n     role=\"tooltip\">\n    <div class=\"tooltip-inner\">\n        <ng-content></ng-content>\n        {{ content }}\n    </div> \n</div>\n"
         }), 
         __metadata('design:paramtypes', [core_1.ElementRef, core_1.ChangeDetectorRef])
     ], TooltipContent);

@@ -6,10 +6,10 @@ import {
 @Component({
     selector: "tooltip-content",
     template: `
-<div class="tooltip tooltip-{{ placement }} show"
+<div class="tooltip tooltip-{{ placement }}"
      [style.top]="top + 'px'"
      [style.left]="left + 'px'"
-     [class.in]="isIn"
+     [class.show]="isShow"
      [class.fade]="isFade"
      role="tooltip">
     <div class="tooltip-inner">
@@ -43,7 +43,7 @@ export class TooltipContent implements AfterViewInit {
 
     top: number = -100000;
     left: number = -100000;
-    isIn: boolean = false;
+    isShow: boolean = false;
     isFade: boolean = true;
 
     // -------------------------------------------------------------------------
@@ -74,7 +74,7 @@ export class TooltipContent implements AfterViewInit {
         const p = this.positionElements(this.hostElement, this.element.nativeElement.children[0], this.placement);
         this.top = p.top;
         this.left = p.left;
-        this.isIn = true;
+        this.isShow = true;
         if (this.animation)
             this.isFade = true;
     }
@@ -82,7 +82,7 @@ export class TooltipContent implements AfterViewInit {
     hide(): void {
         this.top = -100000;
         this.left = -100000;
-        this.isIn = true;
+        this.isShow = false;
         if (this.animation)
             this.isFade = false;
     }
