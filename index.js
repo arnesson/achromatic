@@ -20,6 +20,7 @@ var textarea_1 = require('./textarea');
 var day_1 = require('./day');
 var name_1 = require('./name');
 var distance_1 = require('./distance');
+var tooltip_1 = require('./tooltip');
 var AchromaticModule = (function () {
     function AchromaticModule() {
     }
@@ -38,7 +39,9 @@ var AchromaticModule = (function () {
                 textarea_1.TextareaDirective,
                 day_1.DayPipe,
                 name_1.NamePipe,
-                distance_1.DistancePipe
+                distance_1.DistancePipe,
+                tooltip_1.Tooltip,
+                tooltip_1.TooltipContent
             ],
             exports: [
                 actionsheet_1.ActionsheetComponent,
@@ -50,7 +53,9 @@ var AchromaticModule = (function () {
                 textarea_1.TextareaDirective,
                 day_1.DayPipe,
                 name_1.NamePipe,
-                distance_1.DistancePipe
+                distance_1.DistancePipe,
+                tooltip_1.Tooltip,
+                tooltip_1.TooltipContent
             ]
         }), 
         __metadata('design:paramtypes', [])

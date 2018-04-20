@@ -18,16 +18,20 @@
     "bootstrap": "4.0.0-alpha.6"
   },
   "devDependencies": {
-    "@angular/core": "2.1.0",
-    "@angular/common": "2.1.0",
-    "@angular/forms": "2.1.0",
-    "@angular/router": "3.1.0",
+    "@angular/core": "4.0.0",
+    "@angular/common": "4.0.0",
+    "@angular/forms": "4.0.0",
+    "@angular/router": "4.0.0",
     "@types/core-js": "0.9.34",
-    "rxjs": "5.0.0-beta.12",
-    "typescript": "2.0.3",
+    "rxjs": "5.4.0",
+    "typescript": "2.4.0",
     "zone.js": "0.6.21",
     "svg2ttf": "4.0.2",
     "ttf2woff": "2.0.1",
     "svgicons2svgfont": "5.0.0"
+  },
+  "scripts": {
+    "test": "tsc",
+    "build": "tsc"
   }
 }

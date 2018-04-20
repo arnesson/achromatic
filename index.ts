@@ -11,6 +11,7 @@ import { TextareaDirective } from './textarea';
 import { DayPipe } from './day';
 import { NamePipe } from './name';
 import { DistancePipe } from './distance';
+import { Tooltip, TooltipContent } from './tooltip';
 
 @NgModule({
   imports: [
@@ -26,7 +27,9 @@ import { DistancePipe } from './distance';
     TextareaDirective,
     DayPipe,
     NamePipe,
-    DistancePipe
+    DistancePipe,
+    Tooltip,
+    TooltipContent
   ],
   exports: [
     ActionsheetComponent,
@@ -38,7 +41,9 @@ import { DistancePipe } from './distance';
     TextareaDirective,
     DayPipe,
     NamePipe,
-    DistancePipe
+    DistancePipe,
+    Tooltip,
+    TooltipContent
   ]
 })
 export class AchromaticModule {}

@@ -108,6 +108,12 @@ $grid-gutter-width: 1px !default;
 @import "~bootstrap/scss/responsive-embed";
 @import "~bootstrap/scss/close";
 
+// Components w/ JavaScript
+//@import "~bootstrap/scss/modal";
+@import "~bootstrap/scss/tooltip";
+//@import "~bootstrap/scss/popover";
+//@import "~bootstrap/scss/carousel";
+
 // Utility classes
 @import "~bootstrap/scss/utilities";
 
