@@ -162,7 +162,7 @@ var TooltipContent = /** @class */ (function () {
     };
     __decorate([
         core_1.Input(),
-        __metadata("design:type", HTMLElement)
+        __metadata("design:type", Object)
     ], TooltipContent.prototype, "hostElement", void 0);
     __decorate([
         core_1.Input(),
