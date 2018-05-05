@@ -8,8 +8,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var TextareaDirective = (function () {
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = require("@angular/core");
+var TextareaDirective = /** @class */ (function () {
     function TextareaDirective(element, renderer) {
         this.element = element;
         this.renderer = renderer;
@@ -26,16 +27,17 @@ var TextareaDirective = (function () {
         }
     };
     __decorate([
-        core_1.HostListener('input'), 
-        __metadata('design:type', Function), 
-        __metadata('design:paramtypes', []), 
-        __metadata('design:returntype', void 0)
+        core_1.HostListener('input'),
+        __metadata("design:type", Function),
+        __metadata("design:paramtypes", []),
+        __metadata("design:returntype", void 0)
     ], TextareaDirective.prototype, "input", null);
     TextareaDirective = __decorate([
         core_1.Directive({
             selector: 'textarea'
-        }), 
-        __metadata('design:paramtypes', [core_1.ElementRef, core_1.Renderer])
+        }),
+        __metadata("design:paramtypes", [core_1.ElementRef,
+            core_1.Renderer])
     ], TextareaDirective);
     return TextareaDirective;
 }());

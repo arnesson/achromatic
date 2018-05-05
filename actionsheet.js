@@ -8,10 +8,11 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var router_1 = require('@angular/router');
-require('rxjs/add/operator/filter');
-var ActionsheetComponent = (function () {
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = require("@angular/core");
+var router_1 = require("@angular/router");
+require("rxjs/add/operator/filter");
+var ActionsheetComponent = /** @class */ (function () {
     function ActionsheetComponent(router, elementRef) {
         var _this = this;
         this.router = router;
@@ -45,8 +46,9 @@ var ActionsheetComponent = (function () {
         core_1.Component({
             selector: 'actionsheet',
             template: "\n    <div class=\"spacer\" style=\"position:absolute;bottom:0;left:0;right:0;\">\n      <button *ngFor=\"let action of actions\" (click)=\"action.click()\" class=\"btn btn-block btn-lg btn-secondary\" [ngClass]=\"action.class || ''\">{{action.title}}</button>\n    </div>\n  "
-        }), 
-        __metadata('design:paramtypes', [router_1.Router, core_1.ElementRef])
+        }),
+        __metadata("design:paramtypes", [router_1.Router,
+            core_1.ElementRef])
     ], ActionsheetComponent);
     return ActionsheetComponent;
 }());

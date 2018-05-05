@@ -8,9 +8,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var Observable_1 = require('rxjs/Observable');
-var LazyloadDirective = (function () {
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = require("@angular/core");
+var Observable_1 = require("rxjs/Observable");
+var LazyloadDirective = /** @class */ (function () {
     function LazyloadDirective(elementRef, renderer) {
         this.elementRef = elementRef;
         this.renderer = renderer;
@@ -109,30 +110,31 @@ var LazyloadDirective = (function () {
         }
     };
     __decorate([
-        core_1.Input('lazyload'), 
-        __metadata('design:type', String)
+        core_1.Input('lazyload'),
+        __metadata("design:type", String)
     ], LazyloadDirective.prototype, "file", void 0);
     __decorate([
-        core_1.Input('placeholder'), 
-        __metadata('design:type', String)
+        core_1.Input('placeholder'),
+        __metadata("design:type", String)
     ], LazyloadDirective.prototype, "placeholder", void 0);
     __decorate([
-        core_1.Input('width'), 
-        __metadata('design:type', Object)
+        core_1.Input('width'),
+        __metadata("design:type", Object)
     ], LazyloadDirective.prototype, "width", void 0);
     __decorate([
-        core_1.Input('height'), 
-        __metadata('design:type', Object)
+        core_1.Input('height'),
+        __metadata("design:type", Object)
     ], LazyloadDirective.prototype, "height", void 0);
     __decorate([
-        core_1.Input('trigger'), 
-        __metadata('design:type', Observable_1.Observable)
+        core_1.Input('trigger'),
+        __metadata("design:type", Observable_1.Observable)
     ], LazyloadDirective.prototype, "trigger", void 0);
     LazyloadDirective = __decorate([
         core_1.Directive({
             selector: '[lazyload]'
-        }), 
-        __metadata('design:paramtypes', [core_1.ElementRef, core_1.Renderer])
+        }),
+        __metadata("design:paramtypes", [core_1.ElementRef,
+            core_1.Renderer])
     ], LazyloadDirective);
     return LazyloadDirective;
 }());

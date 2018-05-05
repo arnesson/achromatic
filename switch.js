@@ -1,5 +1,5 @@
-// http://almerosteyn.com/2016/04/linkup-custom-control-to-ngcontrol-ngmodel
 "use strict";
+// http://almerosteyn.com/2016/04/linkup-custom-control-to-ngcontrol-ngmodel
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -9,16 +9,18 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var forms_1 = require('@angular/forms');
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = require("@angular/core");
+var forms_1 = require("@angular/forms");
 var noop = function () { };
-var SwitchComponent = (function () {
+var SwitchComponent = /** @class */ (function () {
     function SwitchComponent(elementRef) {
         this.elementRef = elementRef;
         // Placeholders for the callbacks which are later provided by the Control Value Accessor
         this.onTouchedCallback = noop;
         this.onChangeCallback = noop;
     }
+    SwitchComponent_1 = SwitchComponent;
     Object.defineProperty(SwitchComponent.prototype, "value", {
         // get accessor
         get: function () {
@@ -76,20 +78,21 @@ var SwitchComponent = (function () {
             this.cleanup();
         }
     };
-    SwitchComponent = __decorate([
+    SwitchComponent = SwitchComponent_1 = __decorate([
         core_1.Component({
             selector: 'switch',
             template: "\n    <div style=\"position:absolute;height:28px;width:62px;top:0;left:0\">\n      <div style=\"height:28px;width:17px;top:0;left:0;position:absolute;\"></div>\n      <div class=\"handle\" style=\"height:28px;width:28px;background: #fff;border:1px solid #ddd;border-radius: 100px;top:0;left:0px;position:absolute;-webkit-transition: all .2s ease;transition: all .2s ease;\"></div>\n      <div style=\"height:28px;width:17px;top:0;left:45px;position:absolute;\"></div>\n    </div>\n  ",
             providers: [
                 {
                     provide: forms_1.NG_VALUE_ACCESSOR,
-                    useExisting: core_1.forwardRef(function () { return SwitchComponent; }),
+                    useExisting: core_1.forwardRef(function () { return SwitchComponent_1; }),
                     multi: true
                 }
             ]
-        }), 
-        __metadata('design:paramtypes', [core_1.ElementRef])
+        }),
+        __metadata("design:paramtypes", [core_1.ElementRef])
     ], SwitchComponent);
     return SwitchComponent;
+    var SwitchComponent_1;
 }());
 exports.SwitchComponent = SwitchComponent;

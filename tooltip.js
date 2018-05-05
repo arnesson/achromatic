@@ -8,8 +8,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var TooltipContent = (function () {
+var TooltipContent = /** @class */ (function () {
     // -------------------------------------------------------------------------
     // Constructor
     // -------------------------------------------------------------------------
@@ -160,32 +161,33 @@ var TooltipContent = (function () {
         return offsetParent || window.document;
     };
     __decorate([
-        core_1.Input(), 
-        __metadata('design:type', HTMLElement)
+        core_1.Input(),
+        __metadata("design:type", HTMLElement)
     ], TooltipContent.prototype, "hostElement", void 0);
     __decorate([
-        core_1.Input(), 
-        __metadata('design:type', String)
+        core_1.Input(),
+        __metadata("design:type", String)
     ], TooltipContent.prototype, "content", void 0);
     __decorate([
-        core_1.Input(), 
-        __metadata('design:type', Object)
+        core_1.Input(),
+        __metadata("design:type", String)
     ], TooltipContent.prototype, "placement", void 0);
     __decorate([
-        core_1.Input(), 
-        __metadata('design:type', Boolean)
+        core_1.Input(),
+        __metadata("design:type", Boolean)
     ], TooltipContent.prototype, "animation", void 0);
     TooltipContent = __decorate([
         core_1.Component({
             selector: "tooltip-content",
             template: "\n<div class=\"tooltip tooltip-{{ placement }}\"\n     [style.top]=\"top + 'px'\"\n     [style.left]=\"left + 'px'\"\n     [class.show]=\"isShow\"\n     [class.fade]=\"isFade\"\n     role=\"tooltip\">\n    <div class=\"tooltip-inner\">\n        <ng-content></ng-content>\n        {{ content }}\n    </div> \n</div>\n"
-        }), 
-        __metadata('design:paramtypes', [core_1.ElementRef, core_1.ChangeDetectorRef])
+        }),
+        __metadata("design:paramtypes", [core_1.ElementRef,
+            core_1.ChangeDetectorRef])
     ], TooltipContent);
     return TooltipContent;
 }());
 exports.TooltipContent = TooltipContent;
-var Tooltip = (function () {
+var Tooltip = /** @class */ (function () {
     // -------------------------------------------------------------------------
     // Constructor
     // -------------------------------------------------------------------------
@@ -230,40 +232,41 @@ var Tooltip = (function () {
             this.content.hide();
     };
     __decorate([
-        core_1.Input("tooltip"), 
-        __metadata('design:type', Object)
+        core_1.Input("tooltip"),
+        __metadata("design:type", Object)
     ], Tooltip.prototype, "content", void 0);
     __decorate([
-        core_1.Input(), 
-        __metadata('design:type', Boolean)
+        core_1.Input(),
+        __metadata("design:type", Boolean)
     ], Tooltip.prototype, "tooltipDisabled", void 0);
     __decorate([
-        core_1.Input(), 
-        __metadata('design:type', Boolean)
+        core_1.Input(),
+        __metadata("design:type", Boolean)
     ], Tooltip.prototype, "tooltipAnimation", void 0);
     __decorate([
-        core_1.Input(), 
-        __metadata('design:type', Object)
+        core_1.Input(),
+        __metadata("design:type", String)
     ], Tooltip.prototype, "tooltipPlacement", void 0);
     __decorate([
         core_1.HostListener("focusin"),
-        core_1.HostListener("mouseenter"), 
-        __metadata('design:type', Function), 
-        __metadata('design:paramtypes', []), 
-        __metadata('design:returntype', void 0)
+        core_1.HostListener("mouseenter"),
+        __metadata("design:type", Function),
+        __metadata("design:paramtypes", []),
+        __metadata("design:returntype", void 0)
     ], Tooltip.prototype, "show", null);
     __decorate([
         core_1.HostListener("focusout"),
-        core_1.HostListener("mouseleave"), 
-        __metadata('design:type', Function), 
-        __metadata('design:paramtypes', []), 
-        __metadata('design:returntype', void 0)
+        core_1.HostListener("mouseleave"),
+        __metadata("design:type", Function),
+        __metadata("design:paramtypes", []),
+        __metadata("design:returntype", void 0)
     ], Tooltip.prototype, "hide", null);
     Tooltip = __decorate([
         core_1.Directive({
             selector: "[tooltip]"
-        }), 
-        __metadata('design:paramtypes', [core_1.ViewContainerRef, core_1.ComponentFactoryResolver])
+        }),
+        __metadata("design:paramtypes", [core_1.ViewContainerRef,
+            core_1.ComponentFactoryResolver])
     ], Tooltip);
     return Tooltip;
 }());
