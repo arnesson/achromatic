@@ -26,7 +26,7 @@ var LoadingComponent = /** @class */ (function () {
         });
         Observable_1.Observable.create(function (o) {
             _this.observer = o;
-        }).auditTime(200).subscribe(function (changes) {
+        }).auditTime(50).subscribe(function (changes) {
             if (changes) {
                 Object.assign(_this.elementRef.nativeElement.style, changes);
                 _this.visible = false;
@@ -38,7 +38,7 @@ var LoadingComponent = /** @class */ (function () {
             opacity: '1',
             visibility: 'visible'
         });
-        this.elementRef.nativeElement.className = 'loading-light';
+        this.elementRef.nativeElement.className = className || 'loading-light';
         this.observer.next(null);
         this.visible = true;
     };
@@ -53,7 +53,7 @@ var LoadingComponent = /** @class */ (function () {
     LoadingComponent = __decorate([
         core_1.Component({
             selector: 'loading',
-            template: "\n    <div class=\"spinner\" style=\"position:absolute;top:calc(50% - 20px);left:calc(50% - 20px);width:40px;height:40px;\"></div>\n  "
+            template: "\n    <div class=\"inner\" style=\"position:absolute;top:calc(50% - 40px);left:calc(50% - 40px);width:80px;height:80px;\">\n        <div class=\"spinner\" style=\"margin:20px; width:40px;height:40px;\"></div>\n    </div>\n  "
         }),
         __metadata("design:paramtypes", [router_1.Router,
             core_1.ElementRef])

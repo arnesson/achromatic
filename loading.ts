@@ -8,7 +8,9 @@ import 'rxjs/add/operator/auditTime';
 @Component({
   selector: 'loading',
   template: `
-    <div class="spinner" style="position:absolute;top:calc(50% - 20px);left:calc(50% - 20px);width:40px;height:40px;"></div>
+    <div class="inner" style="position:absolute;top:calc(50% - 40px);left:calc(50% - 40px);width:80px;height:80px;">
+        <div class="spinner" style="margin:20px; width:40px;height:40px;"></div>
+    </div>
   `
 })
 export class LoadingComponent {
@@ -28,7 +30,7 @@ export class LoadingComponent {
 
         Observable.create((o: any) => {
             this.observer = o;
-        }).auditTime(200).subscribe((changes: any) => {
+        }).auditTime(50).subscribe((changes: any) => {
             if (changes) {
                 (<any>Object).assign(this.elementRef.nativeElement.style, changes);
                 this.visible = false;
@@ -41,7 +43,7 @@ export class LoadingComponent {
             opacity: '1', 
             visibility: 'visible'
         });
-        this.elementRef.nativeElement.className = 'loading-light';
+        this.elementRef.nativeElement.className = className || 'loading-light';
         this.observer.next(null);
         this.visible = true;
     }
