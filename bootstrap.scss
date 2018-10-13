@@ -175,7 +175,7 @@ footer {
         contain: initial !important;
     }
     .navbar, footer {
-        display: none;
+        display: none !important;
     }
 }
 sidebar {
